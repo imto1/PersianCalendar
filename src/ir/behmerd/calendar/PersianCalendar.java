@@ -11,24 +11,48 @@ public class PersianCalendar {
 	
     public String convertToPersian(int Year, int Month, int Day)
     {
-        return ConvertToPersianDate(Year, Month, Day);
+        if (GregorianLeapYear(Year))
+            return ConvertPersianDate_Leap(Year, Month, Day);
+        else
+            return ConvertPersianDate_NotLeap(Year, Month, Day, GregorianLeapYear(Year - 1));
     }
 
     public String convertToPersian(String FullDate)
     {
         String[] date = SplitDate(FullDate);
-        return ConvertToPersianDate(Integer.valueOf(date[0]), Integer.valueOf(date[1]), Integer.valueOf(date[2]));
+        return convertToPersian(Integer.valueOf(date[0]), Integer.valueOf(date[1]), Integer.valueOf(date[2]));
     }
 
     public String convertToGregorian(int Year, int Month, int Day)
     {
-        return ConvertToGregorianDate(Year, Month, Day);
+        boolean L = false;
+        if ((Month >= 1) && (Month <= 9))
+            L = GregorianLeapYear(Year + 621);
+        else if (Month == 10)
+        {
+            if (PersianLeapYear(Year))
+            {
+                if ((Day >= 1) && (Day <= 11))
+                    L = GregorianLeapYear(Year + 621);
+            }
+            else
+            {
+                if ((Day >= 1) && (Day <= 10))
+                    L = GregorianLeapYear(Year + 621);
+            }
+        }
+        else
+            L = GregorianLeapYear(Year + 622);
+        if (L)
+            return ConvertGregorianDate_Leap(Year, Month, Day);
+        else
+            return ConvertGregorianDate_NotLeap(Year, Month, Day, PersianLeapYear(Year));
     }
 
     public String convertToGregorian(String FullDate)
     {
         String[] date = SplitDate(FullDate);
-        return ConvertToGregorianDate(Integer.valueOf(date[0]), Integer.valueOf(date[1]), Integer.valueOf(date[2]));
+        return convertToGregorian(Integer.valueOf(date[0]), Integer.valueOf(date[1]), Integer.valueOf(date[2]));
     }
 
     public String getNow()
@@ -147,40 +171,6 @@ public class PersianCalendar {
         ParsePosition position = new ParsePosition(0);
         SimpleDateFormat simpledateformat = new SimpleDateFormat(format);
         return simpledateformat.parse(date, position);
-    }
-
-    private String ConvertToPersianDate(int Year, int Month, int Day)
-    {
-        if (GregorianLeapYear(Year))
-            return ConvertPersianDate_Leap(Year, Month, Day);
-        else
-            return ConvertPersianDate_NotLeap(Year, Month, Day, GregorianLeapYear(Year - 1));
-    }
-
-    private String ConvertToGregorianDate(int Year, int Month, int Day)
-    {
-        boolean L = false;
-        if ((Month >= 1) && (Month <= 9))
-            L = GregorianLeapYear(Year + 621);
-        else if (Month == 10)
-        {
-            if (PersianLeapYear(Year))
-            {
-                if ((Day >= 1) && (Day <= 11))
-                    L = GregorianLeapYear(Year + 621);
-            }
-            else
-            {
-                if ((Day >= 1) && (Day <= 10))
-                    L = GregorianLeapYear(Year + 621);
-            }
-        }
-        else
-            L = GregorianLeapYear(Year + 622);
-        if (L)
-            return ConvertGregorianDate_Leap(Year, Month, Day);
-        else
-            return ConvertGregorianDate_NotLeap(Year, Month, Day, PersianLeapYear(Year));
     }
 
     private String ConvertPersianDate_NotLeap(int Year, int Month, int Day, boolean AL)
