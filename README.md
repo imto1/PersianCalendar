@@ -15,13 +15,13 @@ This is a class library for use in Java/Android projects.
 <h2>Methods:</h2>
 <b>Convert</b><br />
 <a href="#ctp"><code>toPersian()</code></a><br />
-<a href="#ctg"><code>toGregorian()</code></a><br />
+<a href="#ctg"><code>toGregorian()</code></a><br /><br />
 
 <b>Now</b><br />
 <a href="#gn"><code>Today()</code></a><br />
 <a href="#gy"><code>Year()</code></a><br />
 <a href="#gm"><code>Month()</code></a><br />
-<a href="#gd"><code>Day()</code></a><br />
+<a href="#gd"><code>Day()</code></a><br /><br />
 
 <b>Utility</b><br />
 <a href="#gyo"><code>getYearOf()</code></a><br />
