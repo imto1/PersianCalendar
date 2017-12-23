@@ -12,12 +12,12 @@ This is a class library for use in Java/Android projects.
   <li>Utility</li>
 </ul>
 
-<b>Methods:</b><br />
+<h2>Methods:</h2><br />
 <strong>Convert</strong><br />
 <a href="#ctp"><code>toPersian()</code></a><br />
 <a href="#ctg"><code>toGregorian()</code></a><br /><br />
 
-<strongb>Now</strong><br />
+<strong>Now</strong><br />
 <a href="#gn"><code>Today()</code></a><br />
 <a href="#gy"><code>Year()</code></a><br />
 <a href="#gm"><code>Month()</code></a><br />
@@ -31,7 +31,9 @@ This is a class library for use in Java/Android projects.
 <a href="#em"><code>extractMonth()</code></a><br />
 <a href="#ed"><code>extractDay()</code></a><br />
 <a href="#gmd"><code>getMaxDay()</code></a><br />
-<a href="#gdow"><code>getDayOfWeek()</code></a><br /><br /><br />
+<a href="#gdow"><code>getDayOfWeek()</code></a>
+<a href="#gly"><code>GregorianLeapYear()</code></a>
+<a href="#ply"><code>PersianLeapYear()</code></a><br /><br /><br />
 
 <a id="ctp"></a><code>toPersian()</code> Converting gregorian date to persian date.<br /><br />
 Arguments:<br />
@@ -221,4 +223,30 @@ Eg:
 PersianCalendar pc = new PersianCalendar();
 
 int weekDay = pc.Utility.getDayOfWeek("1365-10-29");       
+</pre>
+<br /><br /><br />
+<a id="gly"></a><code>GregorianLeapYear()</code>Return the leap year status for gregorian year.<br /><br />
+Arguments:<br />
+Integer values for Year<br />
+<i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int Year<br />
+Return value: <i>Boolean</i><br /><br />
+
+Eg:
+<pre>
+PersianCalendar pc = new PersianCalendar();
+
+boolean leap = pc.Utility.GregorianLeapYear(2017);       
+</pre>
+<br /><br /><br />
+<a id="ply"></a><code>PersianLeapYear()</code>Return the leap year status for persian year.<br /><br />
+Arguments:<br />
+Integer values for Year<br />
+<i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int Year<br />
+Return value: <i>Boolean</i><br /><br />
+
+Eg:
+<pre>
+PersianCalendar pc = new PersianCalendar();
+
+boolean leap = pc.Utility.PersianLeapYear(1396);       
 </pre>
