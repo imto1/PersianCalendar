@@ -981,16 +981,8 @@ public class PersianCalendar {
 	        else
 	            return weekday;
 	    }
-	    
 
-		private String[] SplitDate(String FullDate){
-			String[] date = FullDate.split("/");
-	        if(date.length<2)
-	            date = FullDate.split("-");
-	        return date;
-		}
-
-	    private boolean GregorianLeapYear(int Year)
+	    public boolean GregorianLeapYear(int Year)
 	    {
 	        if(Year%4 == 0)
 	        {
@@ -1002,7 +994,7 @@ public class PersianCalendar {
 	        return false;
 	    }
 
-	    private boolean PersianLeapYear(int Year)
+	    public boolean PersianLeapYear(int Year)
 	    {
 	        int tens, ones;
 	        tens = Year % 100;
@@ -1014,6 +1006,13 @@ public class PersianCalendar {
 	        else
 	            return ((tens == 0 || tens % 2 == 0) && (ones == 3 || ones == 7));
 	    }
+	    
+		private String[] SplitDate(String FullDate){
+			String[] date = FullDate.split("/");
+	        if(date.length<2)
+	            date = FullDate.split("-");
+	        return date;
+		}
 	    
 	    private Date StringToDate(String date,String format)
 	    {
