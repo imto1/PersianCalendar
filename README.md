@@ -1,32 +1,35 @@
 # Persian Calendar library for Java
 This is a class library for use in Java/Android projects.
 
-<h2>Usage:</h2><br />
+<b>Usage:</b><br />
 <pre>PersianCalendar pc = new PersianCalendar();</pre><br />
 
 
-<h2>Subclasses:</h2><br />
+<b>Subclasses:</b><br />
 <ul>
   <li>Convert</li>
   <li>Now</li>
   <li>Utility</li>
 </ul>
 
-<h2>Methods:</h2>
-<b>Convert</b><br />
+<b>Methods:</b><br />
+<strong>Convert</strong><br />
 <a href="#ctp"><code>toPersian()</code></a><br />
 <a href="#ctg"><code>toGregorian()</code></a><br /><br />
 
-<b>Now</b><br />
+<strongb>Now</strong><br />
 <a href="#gn"><code>Today()</code></a><br />
 <a href="#gy"><code>Year()</code></a><br />
 <a href="#gm"><code>Month()</code></a><br />
 <a href="#gd"><code>Day()</code></a><br /><br />
 
-<b>Utility</b><br />
+<strong>Utility</strong><br />
 <a href="#gyo"><code>getYearOf()</code></a><br />
 <a href="#gmo"><code>getMonthOf()</code></a><br />
 <a href="#gdo"><code>getDayOf()</code></a><br />
+<a href="#ey"><code>extractYear()</code></a><br />
+<a href="#em"><code>extractMonth()</code></a><br />
+<a href="#ed"><code>extractDay()</code></a><br />
 <a href="#gmd"><code>getMaxDay()</code></a><br />
 <a href="#gdow"><code>getDayOfWeek()</code></a><br /><br /><br />
 
@@ -143,6 +146,54 @@ Eg:
 PersianCalendar pc = new PersianCalendar();
 
 int day = pc.Utility.getDayOf(int Year, int Month, int Day);       
+</pre>
+<br /><br /><br />
+<a id="ey"></a><code>extractYear()</code>Extracts the Year of given date for string parameters.<br /><br />
+Arguments:<br />
+String format as follow<br />
+<i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"YYYY-MM-DD"<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"YYYY/MM/DD"<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"MM-DD-YYYY"<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"MM/DD/YYYY"<br /></i><br />
+Return value: <i>Integer</i><br /><br />
+
+Eg:
+<pre>
+PersianCalendar pc = new PersianCalendar();
+
+int year = pc.Utility.extractYear("1365/10/29");       
+</pre>
+<br /><br /><br />
+<a id="em"></a><code>extractMonth()</code>Extracts the Month of given date for string parameters.<br /><br />
+Arguments:<br />
+String format as follow<br />
+<i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"YYYY-MM-DD"<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"YYYY/MM/DD"<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"MM-DD-YYYY"<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"MM/DD/YYYY"<br /></i><br />
+Return value: <i>Integer</i><br /><br />
+
+Eg:
+<pre>
+PersianCalendar pc = new PersianCalendar();
+
+int month = pc.Utility.extractMonth("1365/10/29");       
+</pre>
+<br /><br /><br />
+<a id="ed"></a><code>extractDay()</code>Extracts the Day of given date for string parameters.<br /><br />
+Arguments:<br />
+String format as follow<br />
+<i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"YYYY-MM-DD"<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"YYYY/MM/DD"<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"MM-DD-YYYY"<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"MM/DD/YYYY"<br /></i><br />
+Return value: <i>Integer</i><br /><br />
+
+Eg:
+<pre>
+PersianCalendar pc = new PersianCalendar();
+
+int day = pc.Utility.extractDay("1365/10/29");       
 </pre>
 <br /><br /><br />
 <a id="gmd"></a><code>getMaxDay()</code>Number of days in specified Month.<br /><br />
