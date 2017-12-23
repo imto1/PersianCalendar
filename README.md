@@ -31,8 +31,8 @@ This is a class library for use in Java/Android projects.
 <a href="#em"><code>extractMonth()</code></a><br />
 <a href="#ed"><code>extractDay()</code></a><br />
 <a href="#gmd"><code>getMaxDay()</code></a><br />
-<a href="#gdow"><code>getDayOfWeek()</code></a>
-<a href="#gly"><code>GregorianLeapYear()</code></a>
+<a href="#gdow"><code>getDayOfWeek()</code></a><br />
+<a href="#gly"><code>GregorianLeapYear()</code></a><br />
 <a href="#ply"><code>PersianLeapYear()</code></a><br /><br /><br />
 
 <a id="ctp"></a><code>toPersian()</code> Converting gregorian date to persian date.<br /><br />
