@@ -154,9 +154,7 @@ int day = pc.Utility.getDayOf(int Year, int Month, int Day);
 Arguments:<br />
 String format as follow<br />
 <i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"YYYY-MM-DD"<br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"YYYY/MM/DD"<br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"MM-DD-YYYY"<br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"MM/DD/YYYY"<br /></i><br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"YYYY/MM/DD"<br /></i><br />
 Return value: <i>Integer</i><br /><br />
 
 Eg:
@@ -170,9 +168,7 @@ int year = pc.Utility.extractYear("1365/10/29");
 Arguments:<br />
 String format as follow<br />
 <i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"YYYY-MM-DD"<br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"YYYY/MM/DD"<br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"MM-DD-YYYY"<br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"MM/DD/YYYY"<br /></i><br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"YYYY/MM/DD"<br /></i><br />
 Return value: <i>Integer</i><br /><br />
 
 Eg:
@@ -186,9 +182,7 @@ int month = pc.Utility.extractMonth("1365/10/29");
 Arguments:<br />
 String format as follow<br />
 <i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"YYYY-MM-DD"<br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"YYYY/MM/DD"<br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"MM-DD-YYYY"<br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"MM/DD/YYYY"<br /></i><br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"YYYY/MM/DD"<br /></i><br />
 Return value: <i>Integer</i><br /><br />
 
 Eg:
