@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Persian Calendar</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_main">Month View Activity</string>
+    <string name="wds">ش~ی~د~س~چ~پ~ج</string>
+    <string name="title_activity_year">Year View Activity</string>
+    <string name="title_activity_decade">Decade View Activity</string>
+    <string name="title_activity_settings">SettingsActivity</string>
+</resources>
