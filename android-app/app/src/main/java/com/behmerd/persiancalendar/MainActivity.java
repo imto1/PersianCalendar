@@ -10,9 +10,13 @@ import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.behmerd.persiancalendar.common.PersianCalendar;
+import com.behmerd.persiancalendar.views.MonthView;
+import com.behmerd.persiancalendar.views.WeekDays;
+
 public class MainActivity extends Activity {
 
-    int m,y,d;
+    int year, month, day;
     String[] months;
 
     @Override
@@ -20,57 +24,58 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        PersianCalendar calendar = new PersianCalendar();
         final GridView gvcal=(GridView) findViewById(R.id.gvCalendar);
         GridView gvwd=(GridView) findViewById(R.id.gvWD);
         final TextView tvnow = (TextView) findViewById(R.id.tvNow);
         ImageView ivup = (ImageView) findViewById(R.id.ivU);
         ImageView ivduown = (ImageView) findViewById(R.id.ivDY);
-        Typeface tf = Typeface.createFromAsset(getAssets(),"font/BNazanin.ttf");
-        tvnow.setTypeface(tf);
+        Typeface typeface = Typeface.createFromAsset(getAssets(),"font/BNazanin.ttf");
+        tvnow.setTypeface(typeface);
 
 
         if(getIntent().getExtras() != null){
-            y = getIntent().getExtras().getInt("year");
-            m = getIntent().getExtras().getInt("month");
+            year = getIntent().getExtras().getInt("year");
+            month = getIntent().getExtras().getInt("month");
         }
         else {
-            m = code.getMonth();
-            y = code.getYear();
+            month = calendar.Now.Month();
+            year = calendar.Now.Year();
         }
-        d = code.getDay();
+        day = calendar.Now.Day();
 
         months=getResources().getStringArray(R.array.monthList);
 
-        tvnow.setText(String.valueOf(months[m - 1] + " " + y));
+        tvnow.setText(String.valueOf(months[month - 1] + " " + year));
 
-        gvwd.setAdapter(new WeekDaysCA(this, getResources().getString(R.string.wds).split("~")));
-        gvcal.setAdapter(new MonthViewCA(getApplicationContext(), y, m, d));
+        gvwd.setAdapter(new WeekDays(this, getResources().getString(R.string.wds).split("~")));
+        gvcal.setAdapter(new MonthView(getApplicationContext(), year, month, day));
 
         ivup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (m > 1)
-                    m--;
+                if (month > 1)
+                    month--;
                 else {
-                    y--;
-                    m = 12;
+                    year--;
+                    month = 12;
                 }
-                gvcal.setAdapter(new MonthViewCA(getApplicationContext(), y, m, d));
-                tvnow.setText(String.valueOf(months[m - 1] + " " + y));
+                gvcal.setAdapter(new MonthView(getApplicationContext(), year, month, day));
+                tvnow.setText(String.valueOf(months[month - 1] + " " + year));
             }
         });
 
         ivduown.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (m < 12)
-                    m++;
+                if (month < 12)
+                    month++;
                 else {
-                    y++;
-                    m = 1;
+                    year++;
+                    month = 1;
                 }
-                gvcal.setAdapter(new MonthViewCA(getApplicationContext(), y, m, d));
-                tvnow.setText(String.valueOf(months[m - 1] + " " + y));
+                gvcal.setAdapter(new MonthView(getApplicationContext(), year, month, day));
+                tvnow.setText(String.valueOf(months[month - 1] + " " + year));
             }
         });
 
@@ -78,8 +83,8 @@ public class MainActivity extends Activity {
             @Override
             public void onClick(View v) {
                 Intent i= new Intent(MainActivity.this,YearActivity.class);
-                i.putExtra("year",y);
-                i.putExtra("month", m);
+                i.putExtra("year",year);
+                i.putExtra("month", month);
                 startActivity(i);
             }
         });
@@ -89,8 +94,8 @@ public class MainActivity extends Activity {
             @Override
             public void onClick(View v) {
                 Intent i= new Intent(MainActivity.this,SettingsActivity.class);
-                i.putExtra("year",y);
-                i.putExtra("month",m);
+                i.putExtra("year",year);
+                i.putExtra("month", month);
                 startActivity(i);
             }
         });

@@ -9,6 +9,9 @@ import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.behmerd.persiancalendar.common.PersianCalendar;
+import com.behmerd.persiancalendar.views.YearView;
+
 
 public class YearActivity extends Activity {
 
@@ -27,20 +30,21 @@ public class YearActivity extends Activity {
         Typeface tf = Typeface.createFromAsset(getAssets(), "font/BNazanin.ttf");
         tvnow.setTypeface(tf);
 
+        PersianCalendar calendar = new PersianCalendar();
         if(getIntent().getExtras() != null)
             y = getIntent().getExtras().getInt("year");
         else
-            y = code.getYear();
+            y = calendar.Now.Year();
 
         tvnow.setText(String.valueOf(y));
 
-        gvmc.setAdapter(new YearViewCA(getApplicationContext(), y, month));
+        gvmc.setAdapter(new YearView(getApplicationContext(), y, month));
 
         ivup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 y--;
-                gvmc.setAdapter(new YearViewCA(getApplicationContext(), y, month));
+                gvmc.setAdapter(new YearView(getApplicationContext(), y, month));
                 tvnow.setText(String.valueOf(y));
             }
         });
@@ -49,7 +53,7 @@ public class YearActivity extends Activity {
             @Override
             public void onClick(View v) {
                 y++;
-                gvmc.setAdapter(new YearViewCA(getApplicationContext(), y, month));
+                gvmc.setAdapter(new YearView(getApplicationContext(), y, month));
                 tvnow.setText(String.valueOf(y));
             }
         });

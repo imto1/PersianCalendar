@@ -13,6 +13,8 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.behmerd.persiancalendar.common.Preferences;
+
 
 public class SettingsActivity extends Activity {
 
@@ -70,7 +72,7 @@ public class SettingsActivity extends Activity {
             etM.setText(String.valueOf(m));
         }
 
-        final SP sp = new SP(getApplicationContext());
+        final Preferences sp = new Preferences(getApplicationContext());
         String spd = sp.getPWT();
         if(spd != null){
             String[] spD = spd.split("~");

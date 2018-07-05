@@ -6,6 +6,8 @@ import android.os.CountDownTimer;
 import android.os.Bundle;
 import android.widget.TextView;
 
+import com.behmerd.persiancalendar.common.PersianCalendar;
+
 public class StartingActivity extends Activity {
 
     @Override
@@ -13,11 +15,14 @@ public class StartingActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_starting);
 
+        PersianCalendar calendar = new PersianCalendar();
         TextView tv = (TextView) findViewById(R.id.textView);
-        tv.setText(code.getNow() + "\n" + code.getYear() + "\n" + code.getMonth() + "\n" +
-                code.getDay() + "\n" + code.toPersian("1-19-1987") + "\n" + code.toPersian(1987,1,19) + "\n" +
-                code.yearOf(1987,1,19) + "\n" + code.monthOf(1987,1,19)  + "\n" + code.dayOf(1987,1,19)  + "\n" +
-        code.toGregorian("1365-10-29") + "\n" + code.toGregorian(1365,10,29));
+        tv.setText(calendar.Now.Today() + "\n" + calendar.Now.Year() + "\n" + calendar.Now.Month() +
+                "\n" + calendar.Now.Day() + "\n" + calendar.Convert.toPersian("1-19-1987") + "\n" +
+                calendar.Convert.toPersian(1987,1,19) + "\n" + calendar.Utilities.getYearOf(1987, 1, 19) +
+                "\n" + calendar.Utilities.getMonthOf(1987, 1, 19)  + "\n" +
+                calendar.Utilities.getDayOf(1987,1,19)  + "\n" + calendar.Convert.toGregorian("1365-10-29") +
+                "\n" + calendar.Convert.toGregorian(1365,10,29));
 
 
         new CountDownTimer(2000, 1000) {
