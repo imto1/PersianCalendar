@@ -23,7 +23,6 @@ public class DecadeView extends BaseAdapter {
 
     private static LayoutInflater inflater=null;
     public DecadeView(Context context, int Year) {
-        // TODO Auto-generated constructor stub
         this.context = context;
         PersianCalendar calendar = new PersianCalendar();
         year = Year;
@@ -37,19 +36,16 @@ public class DecadeView extends BaseAdapter {
 
     @Override
     public int getCount() {
-        // TODO Auto-generated method stub
         return 12;
     }
 
     @Override
     public Object getItem(int position) {
-        // TODO Auto-generated method stub
         return position;
     }
 
     @Override
     public long getItemId(int position) {
-        // TODO Auto-generated method stub
         return position;
     }
 
@@ -60,7 +56,6 @@ public class DecadeView extends BaseAdapter {
     }
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
-        // TODO Auto-generated method stub
         final Holder holder=new Holder();
         View rowView;
 
@@ -83,7 +78,6 @@ public class DecadeView extends BaseAdapter {
 
             @Override
             public void onClick(View v) {
-                // TODO Auto-generated method stub
                 Intent intent = new Intent(context, YearActivity.class);
                 intent.putExtra("year", Integer.valueOf(holder.tvYear.getText().toString()));
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);

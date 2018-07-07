@@ -61,19 +61,16 @@ public class MonthView extends BaseAdapter{
 
     @Override
     public int getCount() {
-        // TODO Auto-generated method stub
         return 42;
     }
 
     @Override
     public Object getItem(int position) {
-        // TODO Auto-generated method stub
         return position;
     }
 
     @Override
     public long getItemId(int position) {
-        // TODO Auto-generated method stub
         return position;
     }
 
@@ -86,7 +83,6 @@ public class MonthView extends BaseAdapter{
     }
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
-        // TODO Auto-generated method stub
         final Holder holder=new Holder();
         View rowView;
 
@@ -133,7 +129,6 @@ public class MonthView extends BaseAdapter{
 
             @Override
             public void onClick(View v) {
-                // TODO Auto-generated method stub
                 //Toast.makeText(context, "You Clicked "+(holder.tvDay.getText().toString()), Toast.LENGTH_LONG).show();
             }
         });

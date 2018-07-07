@@ -14,13 +14,13 @@
         android:layout_alignParentTop="true"
         android:layout_gravity="center"
         android:background="#333333"
-        android:id="@+id/llNB">
+        android:id="@+id/yearTopBar">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:id="@+id/tvMonth"
+            android:id="@+id/yearTVMonth"
             android:layout_gravity="center_vertical"
             android:layout_centerVertical="true"
             android:layout_alignParentLeft="true"
@@ -31,18 +31,18 @@
         <ImageView
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:id="@+id/ivUM"
+            android:id="@+id/yearIVUp"
             android:src="@drawable/up"
             android:layout_gravity="center_vertical"
             android:layout_centerVertical="true"
-            android:layout_toLeftOf="@+id/ivDY"
-            android:layout_toStartOf="@+id/ivDY"
+            android:layout_toLeftOf="@+id/decadeIVDown"
+            android:layout_toStartOf="@+id/decadeIVDown"
             android:layout_marginRight="50dp" />
 
         <ImageView
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:id="@+id/ivDY"
+            android:id="@+id/yearIVDown"
             android:src="@drawable/down"
             android:layout_gravity="center_vertical"
             android:layout_alignWithParentIfMissing="false"
@@ -56,12 +56,12 @@
     <GridView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/gvMC"
+        android:id="@+id/yearGVContentPlace"
         android:layout_centerHorizontal="true"
         android:numColumns="3"
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
         android:rotationY="180"
-        android:layout_below="@+id/llNB" />
+        android:layout_below="@+id/mainTopBar" />
 
 </RelativeLayout>

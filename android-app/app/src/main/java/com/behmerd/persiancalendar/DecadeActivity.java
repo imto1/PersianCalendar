@@ -21,10 +21,10 @@ public class DecadeActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_decade);
 
-        final GridView gvContentPlace = (GridView) findViewById(R.id.gvYC);
-        final TextView tvNow = (TextView) findViewById(R.id.tvYear);
-        ImageView ivUp = (ImageView) findViewById(R.id.ivUY);
-        ImageView ivDown = (ImageView) findViewById(R.id.ivDY);
+        final GridView gvContentPlace = (GridView) findViewById(R.id.yearGVContentPlace);
+        final TextView tvNow = (TextView) findViewById(R.id.decadeTVYear);
+        ImageView ivUp = (ImageView) findViewById(R.id.decadeIVUp);
+        ImageView ivDown = (ImageView) findViewById(R.id.decadeIVDown);
         Typeface typeface = Typeface.createFromAsset(getAssets(), "font/BNazanin.ttf");
         tvNow.setTypeface(typeface);
 
@@ -58,7 +58,7 @@ public class DecadeActivity extends Activity {
                 gvContentPlace.setAdapter(new DecadeView(getApplicationContext(), year));
                 decade = year % 10;
                 decade = year - decade;
-                tvNow.setText(String.valueOf(decade+9) + " - " + String.valueOf(decade));
+                tvNow.setText(String.valueOf(decade + 9) + " - " + String.valueOf(decade));
             }
         });
     }

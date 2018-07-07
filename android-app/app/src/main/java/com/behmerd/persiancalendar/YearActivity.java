@@ -22,10 +22,10 @@ public class YearActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_year);
 
-        final GridView gvContentPlace = (GridView) findViewById(R.id.gvMC);
-        final TextView tvNow = (TextView) findViewById(R.id.tvMonth);
-        ImageView ivUp = (ImageView) findViewById(R.id.ivUM);
-        ImageView ivDown = (ImageView) findViewById(R.id.ivDY);
+        final GridView gvContentPlace = (GridView) findViewById(R.id.yearGVContentPlace);
+        final TextView tvNow = (TextView) findViewById(R.id.yearTVMonth);
+        ImageView ivUp = (ImageView) findViewById(R.id.yearIVUp);
+        ImageView ivDown = (ImageView) findViewById(R.id.yearIVDown);
         final String[] month = getResources().getStringArray(R.array.monthList);
         Typeface typeface = Typeface.createFromAsset(getAssets(), "font/BNazanin.ttf");
         tvNow.setTypeface(typeface);
@@ -61,9 +61,9 @@ public class YearActivity extends Activity {
         tvNow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i= new Intent(YearActivity.this,DecadeActivity.class);
-                i.putExtra("year",year);
-                startActivity(i);
+                Intent intent= new Intent(YearActivity.this,DecadeActivity.class);
+                intent.putExtra("year",year);
+                startActivity(intent);
             }
         });
     }

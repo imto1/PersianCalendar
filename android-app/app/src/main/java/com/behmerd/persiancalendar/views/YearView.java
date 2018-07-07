@@ -24,7 +24,7 @@ public class YearView extends BaseAdapter {
     private String[] monthList;
     private Typeface typeface;
 
-    private static LayoutInflater inflater=null;
+    private static LayoutInflater inflater = null;
     public YearView(Context context, int Year, String[] Months) {
         this.context = context;
         year = Year;
