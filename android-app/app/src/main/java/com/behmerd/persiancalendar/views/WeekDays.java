@@ -75,7 +75,7 @@ public class WeekDays extends BaseAdapter{
             if(position == 6)
                 holder.tvDay.setTextColor(context.getResources().getColor(R.color.holiday));
             else
-                holder.tvDay.setTextColor(context.getResources().getColor(R.color.white));
+                holder.tvDay.setTextColor(context.getResources().getColor(R.color.black));
 
         } catch (Exception e) {
             Log.e("WeekDaysView", "ERROR: " + e.getMessage());
