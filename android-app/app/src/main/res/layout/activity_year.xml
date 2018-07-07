@@ -35,7 +35,7 @@
             android:src="@drawable/up"
             android:layout_gravity="center_vertical"
             android:layout_centerVertical="true"
-            android:layout_toLeftOf="@+id/decadeIVDown"
+            android:layout_toLeftOf="@+id/yearIVDown"
             android:layout_toStartOf="@+id/decadeIVDown"
             android:layout_marginRight="50dp" />
 
@@ -62,6 +62,6 @@
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
         android:rotationY="180"
-        android:layout_below="@+id/mainTopBar" />
+        android:layout_below="@+id/yearTopBar" />
 
 </RelativeLayout>

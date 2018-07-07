@@ -35,7 +35,7 @@
             android:src="@drawable/up"
             android:layout_gravity="center_vertical"
             android:layout_centerVertical="true"
-            android:layout_toLeftOf="@+id/decadeIVDown"
+            android:layout_toLeftOf="@+id/mainIVDown"
             android:layout_toStartOf="@+id/decadeIVDown"
             android:layout_marginRight="50dp" />
 

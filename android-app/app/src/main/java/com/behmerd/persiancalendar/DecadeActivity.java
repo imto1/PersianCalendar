@@ -21,7 +21,7 @@ public class DecadeActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_decade);
 
-        final GridView gvContentPlace = (GridView) findViewById(R.id.yearGVContentPlace);
+        final GridView gvContentPlace = (GridView) findViewById(R.id.decadeGVContentPlace);
         final TextView tvNow = (TextView) findViewById(R.id.decadeTVYear);
         ImageView ivUp = (ImageView) findViewById(R.id.decadeIVUp);
         ImageView ivDown = (ImageView) findViewById(R.id.decadeIVDown);
