@@ -60,6 +60,7 @@
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
         android:rotationY="180"
-        android:layout_below="@+id/decadeTopBar" />
+        android:layout_below="@+id/decadeTopBar"
+        android:gravity="center_horizontal" />
 
 </RelativeLayout>

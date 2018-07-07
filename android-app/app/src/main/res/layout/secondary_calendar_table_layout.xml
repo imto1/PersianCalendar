@@ -11,7 +11,8 @@
         android:layout_height="75dp"
         android:id="@+id/SecondaryCalendarTableCell"
         android:rotationY="180"
-        android:transitionGroup="false">
+        android:transitionGroup="false"
+        android:gravity="center">
 
         <TextView
             android:layout_width="wrap_content"
