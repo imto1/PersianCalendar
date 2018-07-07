@@ -21,12 +21,12 @@ public class DecadeActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_decade);
 
-        final GridView gvmc = (GridView) findViewById(R.id.gvYC);
-        final TextView tvnow = (TextView) findViewById(R.id.tvYear);
-        ImageView ivup = (ImageView) findViewById(R.id.ivUY);
-        ImageView ivduown = (ImageView) findViewById(R.id.ivDY);
-        Typeface tf = Typeface.createFromAsset(getAssets(), "font/BNazanin.ttf");
-        tvnow.setTypeface(tf);
+        final GridView gvContentPlace = (GridView) findViewById(R.id.gvYC);
+        final TextView tvNow = (TextView) findViewById(R.id.tvYear);
+        ImageView ivUp = (ImageView) findViewById(R.id.ivUY);
+        ImageView ivDown = (ImageView) findViewById(R.id.ivDY);
+        Typeface typeface = Typeface.createFromAsset(getAssets(), "font/BNazanin.ttf");
+        tvNow.setTypeface(typeface);
 
         PersianCalendar calendar = new PersianCalendar();
         if(getIntent().getExtras() != null)
@@ -36,29 +36,29 @@ public class DecadeActivity extends Activity {
 
         decade = year % 10;
         decade = year - decade;
-        tvnow.setText(String.valueOf(decade + 9) + " - " + String.valueOf(decade));
+        tvNow.setText(String.valueOf(decade + 9) + " - " + String.valueOf(decade));
 
-        gvmc.setAdapter(new DecadeView(getApplicationContext(), year));
+        gvContentPlace.setAdapter(new DecadeView(getApplicationContext(), year));
 
-        ivup.setOnClickListener(new View.OnClickListener() {
+        ivUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 year -= 10;
-                gvmc.setAdapter(new DecadeView(getApplicationContext(), year));
+                gvContentPlace.setAdapter(new DecadeView(getApplicationContext(), year));
                 decade = year % 10;
                 decade = year - decade;
-                tvnow.setText(String.valueOf(decade + 9) + " - " + String.valueOf(decade));
+                tvNow.setText(String.valueOf(decade + 9) + " - " + String.valueOf(decade));
             }
         });
 
-        ivduown.setOnClickListener(new View.OnClickListener() {
+        ivDown.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 year += 10;
-                gvmc.setAdapter(new DecadeView(getApplicationContext(), year));
+                gvContentPlace.setAdapter(new DecadeView(getApplicationContext(), year));
                 decade = year % 10;
                 decade = year - decade;
-                tvnow.setText(String.valueOf(decade+9) + " - " + String.valueOf(decade));
+                tvNow.setText(String.valueOf(decade+9) + " - " + String.valueOf(decade));
             }
         });
     }

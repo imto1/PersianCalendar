@@ -84,10 +84,10 @@ public class DecadeView extends BaseAdapter {
             @Override
             public void onClick(View v) {
                 // TODO Auto-generated method stub
-                Intent i = new Intent(context, YearActivity.class);
-                i.putExtra("year", Integer.valueOf(holder.tvYear.getText().toString()));
-                i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                context.startActivity(i);
+                Intent intent = new Intent(context, YearActivity.class);
+                intent.putExtra("year", Integer.valueOf(holder.tvYear.getText().toString()));
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                context.startActivity(intent);
             }
         });
 

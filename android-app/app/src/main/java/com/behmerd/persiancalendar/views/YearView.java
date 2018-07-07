@@ -20,21 +20,20 @@ import java.util.Arrays;
 public class YearView extends BaseAdapter {
 
     private Context context;
-    private int y, m, cy, cm;
-    private String[] mnt;
-    private Typeface tf;
+    private int year, month, currentYear, currentMonth;
+    private String[] monthList;
+    private Typeface typeface;
 
     private static LayoutInflater inflater=null;
-    public YearView(Context cntx, int Year, String[] Months) {
-        // TODO Auto-generated constructor stub
-        context=cntx;
-        y = Year;
-        mnt = Months;
+    public YearView(Context context, int Year, String[] Months) {
+        this.context = context;
+        year = Year;
+        monthList = Months;
         PersianCalendar calendar = new PersianCalendar();
-        cy = calendar.Now.Year();
-        cm = calendar.Now.Month();
+        currentYear = calendar.Now.Year();
+        currentMonth = calendar.Now.Month();
 
-        tf = Typeface.createFromAsset(context.getAssets(),"font/BNazanin.ttf");
+        typeface = Typeface.createFromAsset(context.getAssets(),"font/BNazanin.ttf");
 
         inflater = ( LayoutInflater )context.
                 getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -42,58 +41,53 @@ public class YearView extends BaseAdapter {
 
     @Override
     public int getCount() {
-        // TODO Auto-generated method stub
         return 12;
     }
 
     @Override
     public Object getItem(int position) {
-        // TODO Auto-generated method stub
         return position;
     }
 
     @Override
     public long getItemId(int position) {
-        // TODO Auto-generated method stub
         return position;
     }
 
     public class Holder
     {
         TextView tvMonth;
-        RelativeLayout rlPanel;
+        RelativeLayout TopBar;
     }
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
-        // TODO Auto-generated method stub
         final Holder holder=new Holder();
         View rowView;
 
         rowView = inflater.inflate(R.layout.yearview_table_layout, null);
         holder.tvMonth=(TextView) rowView.findViewById(R.id.tvMonth);
-        holder.rlPanel=(RelativeLayout) rowView.findViewById(R.id.lPanel);
-        holder.tvMonth.setTypeface(tf);
+        holder.TopBar=(RelativeLayout) rowView.findViewById(R.id.lPanel);
+        holder.tvMonth.setTypeface(typeface);
 
 
-        holder.tvMonth.setText(mnt[position]);
+        holder.tvMonth.setText(monthList[position]);
 
-        m = position+1;
-        if(cy==y && cm==m)
-            holder.rlPanel.setBackgroundColor(Color.parseColor("#00aaff"));
+        month = position + 1;
+        if(currentYear == year && currentMonth == month)
+            holder.TopBar.setBackgroundColor(Color.parseColor("#00aaff"));
 
         rowView.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
-                // TODO Auto-generated method stub
                 int selectedMonth = 1;
-                if(Arrays.asList(mnt).contains(holder.tvMonth.getText().toString()))
-                  selectedMonth = (Arrays.asList(mnt).indexOf(holder.tvMonth.getText().toString()))+1;
-                Intent i = new Intent(context,MainActivity.class);
-                i.putExtra("year",y);
-                i.putExtra("month", selectedMonth);
-                i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                context.startActivity(i);
+                if(Arrays.asList(monthList).contains(holder.tvMonth.getText().toString()))
+                  selectedMonth = (Arrays.asList(monthList).indexOf(holder.tvMonth.getText().toString())) + 1;
+                Intent intent = new Intent(context,MainActivity.class);
+                intent.putExtra("year", year);
+                intent.putExtra("month", selectedMonth);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                context.startActivity(intent);
             }
         });
 

@@ -18,45 +18,42 @@ import com.behmerd.persiancalendar.common.TimeSheet;
 import java.util.Arrays;
 
 public class MonthView extends BaseAdapter{
-
-    private Context context;
-    private int max,dow, day, wd, cy, cm, cd, y, m, d, startingPosition;
-    private boolean isMonthStarted, isMonthEnded, fomfow, tsheet;
-    private Typeface fontB, fontR;
+    private int maxDays,dayOfWeek, dayOfMonth, weekDay, year, month, day, startingPosition;
+    private boolean isMonthStarted, isMonthEnded, weekStartsOnMonthStart, TimeSheetEnabled;
+    private Typeface boldFont, regularFont;
     private String[] rest;
     private PersianCalendar calendar;
 
     private static LayoutInflater inflater = null;
-    public MonthView(Context cntx, int Year, int Month, int Day) {
+    public MonthView(Context context, int Year, int Month, int Day) {
         // TODO Auto-generated constructor stub
-        context=cntx;
         calendar = new PersianCalendar();
-        y=Year;
-        m=Month;
-        d=Day;
-        max = calendar.Utilities.getMaxDay(y, m);
-        dow = calendar.Utilities.getDayOfWeek(y + "/" + m + "/1")+1;
-        day=1;
-        wd=dow;
-        startingPosition=0;
-        fomfow=(dow==1);
+        year = Year;
+        month = Month;
+        day = Day;
+        maxDays = calendar.Utilities.getMaxDay(year, month);
+        dayOfWeek = calendar.Utilities.getDayOfWeek(year + "/" + month + "/1")+1;
+        dayOfMonth = 1;
+        weekDay = dayOfWeek;
+        startingPosition = 0;
+        weekStartsOnMonthStart = (dayOfWeek == 1);
         isMonthStarted = isMonthEnded = false;
-        Preferences sp = new Preferences(context);
-        String spd = sp.getPWT();
-        String[] spData;
-        if(spd != null){
-            spData = spd.split("~");
-            tsheet = Boolean.valueOf(spData[0]);
+        Preferences preferences = new Preferences(context);
+        String TimeSheetRecord = preferences.getPWT();
+        
+        if(TimeSheetRecord != null){
+            String[] TimeSheetData = TimeSheetRecord.split("~");
+            TimeSheetEnabled = Boolean.valueOf(TimeSheetData[0]);
         } else
-            tsheet=false;
+            TimeSheetEnabled = false;
 
-        if(tsheet) {
-            TimeSheet ts = new TimeSheet(context);
-            rest = ts.getRestDays(Year, Month).split("~");
+        if(TimeSheetEnabled) {
+            TimeSheet timesheet = new TimeSheet(context);
+            rest = timesheet.getRestDays(Year, Month).split("~");
         }
 
-        fontB = Typeface.createFromAsset(context.getAssets(),"font/BNaznnBd.ttf");
-        fontR = Typeface.createFromAsset(context.getAssets(),"font/BNazanin.ttf");
+        boldFont = Typeface.createFromAsset(context.getAssets(),"font/BNaznnBd.ttf");
+        regularFont = Typeface.createFromAsset(context.getAssets(),"font/BNazanin.ttf");
 
         inflater = ( LayoutInflater )context.
                 getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -83,9 +80,9 @@ public class MonthView extends BaseAdapter{
     public class Holder
     {
         TextView tvDay;
-        TextView tvEv;
-        TextView tvAp;
-        RelativeLayout rlPanel;
+        TextView tvEvent;
+        TextView tvAppointment;
+        RelativeLayout TopBar;
     }
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
@@ -95,40 +92,40 @@ public class MonthView extends BaseAdapter{
 
         rowView = inflater.inflate(R.layout.calendar_table_layout, null);
         holder.tvDay=(TextView) rowView.findViewById(R.id.tvDay);
-        holder.tvEv=(TextView) rowView.findViewById(R.id.tvEvent);
-        holder.tvAp=(TextView) rowView.findViewById(R.id.tvAppointment);
-        holder.rlPanel=(RelativeLayout) rowView.findViewById(R.id.lPanel);
+        holder.tvEvent=(TextView) rowView.findViewById(R.id.tvEvent);
+        holder.tvAppointment=(TextView) rowView.findViewById(R.id.tvAppointment);
+        holder.TopBar=(RelativeLayout) rowView.findViewById(R.id.lPanel);
 
-        holder.tvDay.setTypeface(fontB);
-        holder.tvEv.setTypeface(fontR);
-        holder.tvAp.setTypeface(fontR);
+        holder.tvDay.setTypeface(boldFont);
+        holder.tvEvent.setTypeface(regularFont);
+        holder.tvAppointment.setTypeface(regularFont);
 
-        if(fomfow)
+        if(weekStartsOnMonthStart)
             if(position>startingPosition)
                 inc();
 
-        if((position+1)==wd)
+        if((position+1)==weekDay)
             isMonthStarted=true;
-        else if(day>max)
+        else if(dayOfMonth>maxDays)
             isMonthEnded = true;
         if(isMonthStarted && !isMonthEnded) {
-            holder.tvDay.setText(String.valueOf(day));
+            holder.tvDay.setText(String.valueOf(dayOfMonth));
 
-            if(tsheet)
-                if (Arrays.asList(rest).contains(String.valueOf(day)))
-                    holder.rlPanel.setBackgroundColor(Color.parseColor("#00aa00"));//holder.rlPanel.setBackgroundResource(R.drawable.t);
+            if(TimeSheetEnabled)
+                if (Arrays.asList(rest).contains(String.valueOf(dayOfMonth)))
+                    holder.TopBar.setBackgroundColor(Color.parseColor("#00aa00"));//holder.TopBar.setBackgroundResource(R.drawable.t);
 
-            if (dow == 7)
-                holder.tvDay.setTextColor(Color.parseColor("#ffaa00"));//holder.rlPanel.setBackgroundResource(R.drawable.f);
+            if (dayOfWeek == 7)
+                holder.tvDay.setTextColor(Color.parseColor("#ffaa00"));//holder.TopBar.setBackgroundResource(R.drawable.f);
             else
-                holder.tvDay.setTextColor(Color.parseColor("#ffffff"));//holder.rlPanel.setBackgroundResource(R.drawable.n);
+                holder.tvDay.setTextColor(Color.parseColor("#ffffff"));//holder.TopBar.setBackgroundResource(R.drawable.n);
 
-            cy = calendar.Now.Year();
-            cm = calendar.Now.Month();
-            cd = day;
-            if(cy==y && cm==m && cd==d)
-                holder.rlPanel.setBackgroundColor(Color.parseColor("#00aaff"));
-            if(!fomfow)
+            int currentYear = calendar.Now.Year();
+            int currentMonth = calendar.Now.Month();
+            int currentDay = dayOfMonth;
+            if(currentYear == year && currentMonth == month && currentDay == day)
+                holder.TopBar.setBackgroundColor(Color.parseColor("#00aaff"));
+            if(!weekStartsOnMonthStart)
                 inc();
         }
 
@@ -145,11 +142,11 @@ public class MonthView extends BaseAdapter{
     }
 
     private void inc(){
-        if (dow < 7)
-            dow++;
+        if (dayOfWeek < 7)
+            dayOfWeek++;
         else
-            dow = 1;
-        ++day;
+            dayOfWeek = 1;
+        ++dayOfMonth;
     }
 
 }

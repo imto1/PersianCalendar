@@ -18,8 +18,8 @@ import com.behmerd.persiancalendar.common.Preferences;
 
 public class SettingsActivity extends Activity {
 
-    boolean isTSEnabled;
-    int m,y;
+    boolean TimeSheetEnabled;
+    int month, year;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,85 +28,85 @@ public class SettingsActivity extends Activity {
 
         //layout objects
         final Button btnSave = (Button) findViewById(R.id.btnSave);
-        final EditText etW = (EditText) findViewById(R.id.etWork);
-        final EditText etR = (EditText) findViewById(R.id.etRest);
-        final EditText etD = (EditText) findViewById(R.id.etDayTS);
-        final EditText etM = (EditText) findViewById(R.id.etMonthTS);
-        final EditText etY = (EditText) findViewById(R.id.etYearTS);
-        final LinearLayout llWaR = (LinearLayout) findViewById(R.id.llWaRDays);
-        final LinearLayout llsDate = (LinearLayout) findViewById(R.id.llsDate);
-        final TextView tvWaR = (TextView) findViewById(R.id.tvWaR);
-        final TextView tvsDate = (TextView) findViewById(R.id.tvStartDate);
+        final EditText etWork = (EditText) findViewById(R.id.etWork);
+        final EditText etRest = (EditText) findViewById(R.id.etRest);
+        final EditText etDay = (EditText) findViewById(R.id.etDayTS);
+        final EditText etMonth = (EditText) findViewById(R.id.etMonthTS);
+        final EditText etYear = (EditText) findViewById(R.id.etYearTS);
+        final LinearLayout llWorkAndRest = (LinearLayout) findViewById(R.id.llWaRDays);
+        final LinearLayout llStartDate = (LinearLayout) findViewById(R.id.llsDate);
+        final TextView tvWorkAndRest = (TextView) findViewById(R.id.tvWaR);
+        final TextView tvStartDate = (TextView) findViewById(R.id.tvStartDate);
         TextView tvTitle = (TextView) findViewById(R.id.tvSTitle);
-        TextView tvW = (TextView) findViewById(R.id.tvWork);
-        TextView tvR = (TextView) findViewById(R.id.tvRest);
-        TextView tvD = (TextView) findViewById(R.id.tvDayTS);
-        TextView tvM = (TextView) findViewById(R.id.tvMonthTS);
-        TextView tvY = (TextView) findViewById(R.id.tvYearTS);
-        Switch op = (Switch) findViewById(R.id.opTimeSheet);
+        TextView tvWork = (TextView) findViewById(R.id.tvWork);
+        TextView tvRest = (TextView) findViewById(R.id.tvRest);
+        TextView tvDay = (TextView) findViewById(R.id.tvDayTS);
+        TextView tvMonth = (TextView) findViewById(R.id.tvMonthTS);
+        TextView tvYear = (TextView) findViewById(R.id.tvYearTS);
+        Switch TimeSheetSwitch = (Switch) findViewById(R.id.opTimeSheet);
 
 
         Typeface fontB = Typeface.createFromAsset(getAssets(), "font/BNaznnBd.ttf");
         Typeface fontR = Typeface.createFromAsset(getAssets(),"font/BNazanin.ttf");
 
-        etW.setTypeface(fontR);
-        etR.setTypeface(fontR);
-        etD.setTypeface(fontR);
-        etM.setTypeface(fontR);
-        etY.setTypeface(fontR);
-        tvW.setTypeface(fontR);
-        tvR.setTypeface(fontR);
-        tvD.setTypeface(fontR);
-        tvM.setTypeface(fontR);
-        tvY.setTypeface(fontR);
+        etWork.setTypeface(fontR);
+        etRest.setTypeface(fontR);
+        etDay.setTypeface(fontR);
+        etMonth.setTypeface(fontR);
+        etYear.setTypeface(fontR);
+        tvWork.setTypeface(fontR);
+        tvRest.setTypeface(fontR);
+        tvDay.setTypeface(fontR);
+        tvMonth.setTypeface(fontR);
+        tvYear.setTypeface(fontR);
         btnSave.setTypeface(fontR);
-        tvWaR.setTypeface(fontB);
-        tvsDate.setTypeface(fontB);
-        op.setTypeface(fontR);
+        tvWorkAndRest.setTypeface(fontB);
+        tvStartDate.setTypeface(fontB);
+        TimeSheetSwitch.setTypeface(fontR);
         tvTitle.setTypeface(fontB);
 
         if(getIntent().getExtras() != null){
-            y = getIntent().getExtras().getInt("year");
-            m = getIntent().getExtras().getInt("month");
-            etY.setText(String.valueOf(y));
-            etM.setText(String.valueOf(m));
+            year = getIntent().getExtras().getInt("year");
+            month = getIntent().getExtras().getInt("month");
+            etYear.setText(String.valueOf(year));
+            etMonth.setText(String.valueOf(month));
         }
 
         final Preferences sp = new Preferences(getApplicationContext());
         String spd = sp.getPWT();
         if(spd != null){
             String[] spD = spd.split("~");
-            isTSEnabled = Boolean.valueOf(spD[0]);
-            op.setChecked(isTSEnabled);
-            if (isTSEnabled) {
-                llWaR.setVisibility(View.VISIBLE);
-                llsDate.setVisibility(View.VISIBLE);
-                tvWaR.setVisibility(View.VISIBLE);
-                tvsDate.setVisibility(View.VISIBLE);
+            TimeSheetEnabled = Boolean.valueOf(spD[0]);
+            TimeSheetSwitch.setChecked(TimeSheetEnabled);
+            if (TimeSheetEnabled) {
+                llWorkAndRest.setVisibility(View.VISIBLE);
+                llStartDate.setVisibility(View.VISIBLE);
+                tvWorkAndRest.setVisibility(View.VISIBLE);
+                tvStartDate.setVisibility(View.VISIBLE);
             }
-            etW.setText(spD[1]);
-            etR.setText(spD[2]);
+            etWork.setText(spD[1]);
+            etRest.setText(spD[2]);
             String[] spDS = spD[3].split("/");
-            etY.setText(spDS[0]);
-            etM.setText(spDS[1]);
-            etD.setText(spDS[2]);
+            etYear.setText(spDS[0]);
+            etMonth.setText(spDS[1]);
+            etDay.setText(spDS[2]);
         }
 
-        op.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        TimeSheetSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
-                    llWaR.setVisibility(View.VISIBLE);
-                    llsDate.setVisibility(View.VISIBLE);
-                    tvWaR.setVisibility(View.VISIBLE);
-                    tvsDate.setVisibility(View.VISIBLE);
+                    llWorkAndRest.setVisibility(View.VISIBLE);
+                    llStartDate.setVisibility(View.VISIBLE);
+                    tvWorkAndRest.setVisibility(View.VISIBLE);
+                    tvStartDate.setVisibility(View.VISIBLE);
                 } else {
-                    llWaR.setVisibility(View.INVISIBLE);
-                    llsDate.setVisibility(View.INVISIBLE);
-                    tvWaR.setVisibility(View.INVISIBLE);
-                    tvsDate.setVisibility(View.INVISIBLE);
+                    llWorkAndRest.setVisibility(View.INVISIBLE);
+                    llStartDate.setVisibility(View.INVISIBLE);
+                    tvWorkAndRest.setVisibility(View.INVISIBLE);
+                    tvStartDate.setVisibility(View.INVISIBLE);
                 }
-                isTSEnabled = isChecked;
+                TimeSheetEnabled = isChecked;
             }
         });
 
@@ -114,13 +114,13 @@ public class SettingsActivity extends Activity {
             @Override
             public void onClick(View v) {
 
-                boolean isSaved = sp.setPWT(isTSEnabled, etW.getText().toString(), etR.getText().toString(),
-                        (etY.getText().toString() + "/" + etM.getText().toString() + "/" + etD.getText().toString()));
+                boolean isSaved = sp.setPWT(TimeSheetEnabled, etWork.getText().toString(), etRest.getText().toString(),
+                        (etYear.getText().toString() + "/" + etMonth.getText().toString() + "/" + etDay.getText().toString()));
                 if (isSaved) {
                     Toast.makeText(SettingsActivity.this, "Settings are saved!", Toast.LENGTH_LONG).show();
                     Intent i= new Intent(SettingsActivity.this,MainActivity.class);
-                    i.putExtra("year",y);
-                    i.putExtra("month", m);
+                    i.putExtra("year", year);
+                    i.putExtra("month", month);
                     startActivity(i);
                 }
             }
