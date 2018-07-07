@@ -52,7 +52,7 @@ public class YearView extends BaseAdapter {
     public class Holder
     {
         TextView tvMonth;
-        RelativeLayout TopBar;
+        RelativeLayout cell;
     }
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
@@ -62,9 +62,9 @@ public class YearView extends BaseAdapter {
             LayoutInflater inflater = ( LayoutInflater )context.
                     getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
-            convertView = inflater.inflate(R.layout.yearview_table_layout, parent, false);
-            holder.tvMonth=(TextView) convertView.findViewById(R.id.tvMonth);
-            holder.TopBar=(RelativeLayout) convertView.findViewById(R.id.lPanel);
+            convertView = inflater.inflate(R.layout.secondary_calendar_table_layout, parent, false);
+            holder.tvMonth=(TextView) convertView.findViewById(R.id.SCTVEntry);
+            holder.cell=(RelativeLayout) convertView.findViewById(R.id.SecondaryCalendarTableCell);
 
             convertView.setTag(holder);
             convertView.setOnClickListener(new View.OnClickListener() {
@@ -92,7 +92,7 @@ public class YearView extends BaseAdapter {
 
             int month = position + 1;
             if(currentYear == year && currentMonth == month)
-                holder.TopBar.setBackgroundColor(Color.parseColor("#00aaff"));
+                holder.cell.setBackgroundColor(Color.parseColor("#00aaff"));
         } catch (Exception e) {
             Log.e("YearView", "ERROR: " + e.getMessage());
         }

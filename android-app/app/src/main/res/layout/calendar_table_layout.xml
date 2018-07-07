@@ -9,14 +9,14 @@
     <RelativeLayout
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:id="@+id/lPanel"
+        android:id="@+id/CalendarTableCell"
         android:rotationY="180" >
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:id="@+id/tvDay"
+            android:id="@+id/CTTVDay"
             android:layout_centerVertical="true"
             android:layout_centerHorizontal="true"
             android:textColor="#ffffff" />
@@ -25,7 +25,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceSmall"
-            android:id="@+id/tvEvent"
+            android:id="@+id/CTTVEntry"
             android:layout_alignParentBottom="true"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
@@ -33,16 +33,5 @@
             android:layout_marginBottom="5dp"
             android:textColor="#ffffff" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:id="@+id/tvAppointment"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginLeft="5dp"
-            android:layout_marginBottom="5dp"
-            android:textColor="#ffffff" />
     </RelativeLayout>
 </LinearLayout>

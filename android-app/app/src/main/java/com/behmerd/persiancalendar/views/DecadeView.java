@@ -48,7 +48,7 @@ public class DecadeView extends BaseAdapter {
     public class Holder
     {
         TextView tvYear;
-        RelativeLayout rlPanel;
+        RelativeLayout cell;
     }
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
@@ -57,10 +57,10 @@ public class DecadeView extends BaseAdapter {
             final Holder finalHolder = holder = new Holder();
             LayoutInflater inflater = ( LayoutInflater )context.
                     getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = inflater.inflate(R.layout.yearview_table_layout, parent, false);
+            convertView = inflater.inflate(R.layout.secondary_calendar_table_layout, parent, false);
 
-            holder.tvYear = (TextView) convertView.findViewById(R.id.tvMonth);
-            holder.rlPanel = (RelativeLayout) convertView.findViewById(R.id.lPanel);
+            holder.tvYear = (TextView) convertView.findViewById(R.id.SCTVEntry);
+            holder.cell = (RelativeLayout) convertView.findViewById(R.id.SecondaryCalendarTableCell);
 
             convertView.setTag(holder);
             convertView.setOnClickListener(new View.OnClickListener() {
@@ -84,7 +84,7 @@ public class DecadeView extends BaseAdapter {
                 holder.tvYear.setTextColor(Color.parseColor("#444444"));
 
             if(currentYear == (decade + position))
-                holder.rlPanel.setBackgroundColor(Color.parseColor("#00aaff"));
+                holder.cell.setBackgroundColor(Color.parseColor("#00aaff"));
         } catch (Exception e) {
             Log.e("DecadeView", "ERROR: " + e.getMessage());
         }

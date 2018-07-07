@@ -51,8 +51,8 @@ public class WeekDays extends BaseAdapter{
             LayoutInflater inflater = ( LayoutInflater )context.
                     getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = inflater.inflate(R.layout.calendar_table_layout, parent, false);
-            holder.tvDay = (TextView) convertView.findViewById(R.id.tvDay);
-            holder.TopBar = (RelativeLayout) convertView.findViewById(R.id.lPanel);
+            holder.tvDay = (TextView) convertView.findViewById(R.id.CTTVDay);
+            holder.TopBar = (RelativeLayout) convertView.findViewById(R.id.CalendarTableCell);
 
             convertView.setTag(holder);
             convertView.setOnClickListener(new OnClickListener() {

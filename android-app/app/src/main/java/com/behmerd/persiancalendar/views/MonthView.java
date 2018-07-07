@@ -76,7 +76,6 @@ public class MonthView extends BaseAdapter{
     {
         TextView tvDay;
         TextView tvEvent;
-        TextView tvAppointment;
         RelativeLayout TopBar;
     }
     @Override
@@ -88,10 +87,9 @@ public class MonthView extends BaseAdapter{
                     getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = inflater.inflate(R.layout.calendar_table_layout, parent, false);
 
-            holder.tvDay=(TextView) convertView.findViewById(R.id.tvDay);
-            holder.tvEvent=(TextView) convertView.findViewById(R.id.tvEvent);
-            holder.tvAppointment=(TextView) convertView.findViewById(R.id.tvAppointment);
-            holder.TopBar=(RelativeLayout) convertView.findViewById(R.id.lPanel);
+            holder.tvDay=(TextView) convertView.findViewById(R.id.CTTVDay);
+            holder.tvEvent=(TextView) convertView.findViewById(R.id.CTTVEntry);
+            holder.TopBar=(RelativeLayout) convertView.findViewById(R.id.CalendarTableCell);
 
             convertView.setTag(holder);
             convertView.setOnClickListener(new OnClickListener() {
@@ -108,7 +106,6 @@ public class MonthView extends BaseAdapter{
         try {
             holder.tvDay.setTypeface(boldFont);
             holder.tvEvent.setTypeface(regularFont);
-            holder.tvAppointment.setTypeface(regularFont);
 
             if(weekStartsOnMonthStart)
                 if(position>startingPosition)
