@@ -76,7 +76,7 @@ public class MonthView extends BaseAdapter{
     {
         TextView tvDay;
         TextView tvEvent;
-        RelativeLayout TopBar;
+        RelativeLayout cell;
     }
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
@@ -89,14 +89,13 @@ public class MonthView extends BaseAdapter{
 
             holder.tvDay=(TextView) convertView.findViewById(R.id.CTTVDay);
             holder.tvEvent=(TextView) convertView.findViewById(R.id.CTTVEntry);
-            holder.TopBar=(RelativeLayout) convertView.findViewById(R.id.CalendarTableCell);
+            holder.cell=(RelativeLayout) convertView.findViewById(R.id.CalendarTableCell);
 
             convertView.setTag(holder);
             convertView.setOnClickListener(new OnClickListener() {
 
                 @Override
                 public void onClick(View v) {
-                    //Toast.makeText(context, "You Clicked "+(holder.tvDay.getText().toString()), Toast.LENGTH_LONG).show();
                 }
             });
         } else {
@@ -108,30 +107,30 @@ public class MonthView extends BaseAdapter{
             holder.tvEvent.setTypeface(regularFont);
 
             if(weekStartsOnMonthStart)
-                if(position>startingPosition)
+                if(position > startingPosition)
                     inc();
 
-            if((position+1)==weekDay)
-                isMonthStarted=true;
-            else if(dayOfMonth>maxDays)
+            if((position + 1) == weekDay)
+                isMonthStarted = true;
+            else if(dayOfMonth > maxDays)
                 isMonthEnded = true;
             if(isMonthStarted && !isMonthEnded) {
                 holder.tvDay.setText(String.valueOf(dayOfMonth));
 
                 if(TimeSheetEnabled)
                     if (Arrays.asList(rest).contains(String.valueOf(dayOfMonth)))
-                        holder.TopBar.setBackgroundColor(context.getResources().getColor(R.color.rest_day));//holder.TopBar.setBackgroundResource(R.drawable.t);
+                        holder.cell.setBackgroundColor(context.getResources().getColor(R.color.rest_day));
 
                 if (dayOfWeek == 7)
-                    holder.tvDay.setTextColor(context.getResources().getColor(R.color.holiday));//holder.TopBar.setBackgroundResource(R.drawable.f);
+                    holder.tvDay.setTextColor(context.getResources().getColor(R.color.holiday));
                 else
-                    holder.tvDay.setTextColor(context.getResources().getColor(R.color.black));//holder.TopBar.setBackgroundResource(R.drawable.n);
+                    holder.tvDay.setTextColor(context.getResources().getColor(R.color.black));
 
                 int currentYear = calendar.Now.Year();
                 int currentMonth = calendar.Now.Month();
                 int currentDay = dayOfMonth;
                 if(currentYear == year && currentMonth == month && currentDay == day)
-                    holder.TopBar.setBackgroundColor(context.getResources().getColor(R.color.position));
+                    holder.cell.setBackgroundColor(context.getResources().getColor(R.color.position));
                 if(!weekStartsOnMonthStart)
                     inc();
             }
