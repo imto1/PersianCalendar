@@ -120,18 +120,18 @@ public class MonthView extends BaseAdapter{
 
                 if(TimeSheetEnabled)
                     if (Arrays.asList(rest).contains(String.valueOf(dayOfMonth)))
-                        holder.TopBar.setBackgroundColor(Color.parseColor("#00aa00"));//holder.TopBar.setBackgroundResource(R.drawable.t);
+                        holder.TopBar.setBackgroundColor(context.getResources().getColor(R.color.rest_day));//holder.TopBar.setBackgroundResource(R.drawable.t);
 
                 if (dayOfWeek == 7)
-                    holder.tvDay.setTextColor(Color.parseColor("#ffaa00"));//holder.TopBar.setBackgroundResource(R.drawable.f);
+                    holder.tvDay.setTextColor(context.getResources().getColor(R.color.holiday));//holder.TopBar.setBackgroundResource(R.drawable.f);
                 else
-                    holder.tvDay.setTextColor(Color.parseColor("#ffffff"));//holder.TopBar.setBackgroundResource(R.drawable.n);
+                    holder.tvDay.setTextColor(context.getResources().getColor(R.color.black));//holder.TopBar.setBackgroundResource(R.drawable.n);
 
                 int currentYear = calendar.Now.Year();
                 int currentMonth = calendar.Now.Month();
                 int currentDay = dayOfMonth;
                 if(currentYear == year && currentMonth == month && currentDay == day)
-                    holder.TopBar.setBackgroundColor(Color.parseColor("#00aaff"));
+                    holder.TopBar.setBackgroundColor(context.getResources().getColor(R.color.position));
                 if(!weekStartsOnMonthStart)
                     inc();
             }

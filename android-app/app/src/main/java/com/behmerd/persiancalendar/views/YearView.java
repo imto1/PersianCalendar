@@ -92,7 +92,7 @@ public class YearView extends BaseAdapter {
 
             int month = position + 1;
             if(currentYear == year && currentMonth == month)
-                holder.cell.setBackgroundColor(Color.parseColor("#00aaff"));
+                holder.cell.setBackgroundColor(context.getResources().getColor(R.color.position));
         } catch (Exception e) {
             Log.e("YearView", "ERROR: " + e.getMessage());
         }

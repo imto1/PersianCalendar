@@ -81,10 +81,10 @@ public class DecadeView extends BaseAdapter {
             holder.tvYear.setTypeface(typeface);
             holder.tvYear.setText(String.valueOf(decade + position));
             if((decade + position) > (decade + 9))
-                holder.tvYear.setTextColor(Color.parseColor("#444444"));
+                holder.tvYear.setTextColor(context.getResources().getColor(R.color.white));
 
             if(currentYear == (decade + position))
-                holder.cell.setBackgroundColor(Color.parseColor("#00aaff"));
+                holder.cell.setBackgroundColor(context.getResources().getColor(R.color.position));
         } catch (Exception e) {
             Log.e("DecadeView", "ERROR: " + e.getMessage());
         }

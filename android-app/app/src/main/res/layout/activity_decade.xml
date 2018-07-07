@@ -2,7 +2,8 @@
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.behmerd.sunnycalendar.DecadeActivity"
-    android:background="#333333">
+    android:background="@color/white"
+    android:id="@+id/DecadeActivityMaster">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -11,7 +12,7 @@
         android:layout_alignParentStart="false"
         android:layout_alignParentTop="true"
         android:layout_gravity="center"
-        android:background="#333333"
+        android:background="@color/white"
         android:id="@+id/decadeTopBar">
 
         <TextView
@@ -24,7 +25,7 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_marginLeft="25dp"
-            android:textColor="#ffffff" />
+            android:textColor="@color/black" />
 
         <ImageView
             android:layout_width="30dp"
@@ -35,7 +36,8 @@
             android:layout_centerVertical="true"
             android:layout_toLeftOf="@+id/decadeIVDown"
             android:layout_toStartOf="@+id/decadeIVDown"
-            android:layout_marginRight="50dp" />
+            android:layout_marginRight="50dp"
+            android:background="@drawable/black_circle" />
 
         <ImageView
             android:layout_width="30dp"
@@ -47,7 +49,8 @@
             android:layout_centerVertical="true"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="false"
-            android:layout_marginRight="25dp" />
+            android:layout_marginRight="25dp"
+            android:background="@drawable/black_circle" />
 
     </RelativeLayout>
 

@@ -70,12 +70,12 @@ public class WeekDays extends BaseAdapter{
 
             holder.tvDay.setText(WeekDays[position]);
         /*if(position==5)
-            holder.tvDay.setTextColor(Color.parseColor("#00aaff"));
+            holder.tvDay.setTextColor(Color.parseColor(""));
         else */
             if(position == 6)
-                holder.tvDay.setTextColor(Color.parseColor("#ffaa00"));
+                holder.tvDay.setTextColor(context.getResources().getColor(R.color.holiday));
             else
-                holder.tvDay.setTextColor(Color.parseColor("#ffffff"));
+                holder.tvDay.setTextColor(context.getResources().getColor(R.color.white));
 
         } catch (Exception e) {
             Log.e("WeekDaysView", "ERROR: " + e.getMessage());
