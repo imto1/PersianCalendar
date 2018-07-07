@@ -2,6 +2,7 @@ package com.behmerd.persiancalendar.views;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.Typeface;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -14,13 +15,12 @@ import com.behmerd.persiancalendar.R;
 
 public class WeekDays extends BaseAdapter{
     private String[] WeekDays;
-    private static LayoutInflater inflater = null;
     private Typeface typeface;
+    private Context context;
     public WeekDays(Context context, String[] Days) {
+        this.context = context;
         WeekDays = Days;
         typeface = Typeface.createFromAsset(context.getAssets(),"font/BNazanin.ttf");
-        inflater = ( LayoutInflater )context.
-                getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
     @Override
@@ -45,31 +45,43 @@ public class WeekDays extends BaseAdapter{
     }
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
-        Holder holder = new Holder();
-        View rowView;
+        Holder holder = null;
+        if(convertView == null) {
+            holder = new Holder();
+            LayoutInflater inflater = ( LayoutInflater )context.
+                    getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            convertView = inflater.inflate(R.layout.calendar_table_layout, parent, false);
+            holder.tvDay = (TextView) convertView.findViewById(R.id.tvDay);
+            holder.TopBar = (RelativeLayout) convertView.findViewById(R.id.lPanel);
 
-        rowView = inflater.inflate(R.layout.calendar_table_layout, null);
-        holder.tvDay = (TextView) rowView.findViewById(R.id.tvDay);
-        holder.TopBar = (RelativeLayout) rowView.findViewById(R.id.lPanel);
-        holder.tvDay.setTypeface(typeface);
+            convertView.setTag(holder);
+            convertView.setOnClickListener(new OnClickListener() {
 
-        holder.tvDay.setText(WeekDays[position]);
+                @Override
+                public void onClick(View v) {
+                }
+            });
+        } else {
+            holder = (Holder) convertView.getTag();
+        }
+
+        try {
+            holder.tvDay.setTypeface(typeface);
+
+            holder.tvDay.setText(WeekDays[position]);
         /*if(position==5)
             holder.tvDay.setTextColor(Color.parseColor("#00aaff"));
         else */
-        if(position == 6)
-            holder.tvDay.setTextColor(Color.parseColor("#ffaa00"));
-        else
-            holder.tvDay.setTextColor(Color.parseColor("#ffffff"));
+            if(position == 6)
+                holder.tvDay.setTextColor(Color.parseColor("#ffaa00"));
+            else
+                holder.tvDay.setTextColor(Color.parseColor("#ffffff"));
 
-        rowView.setOnClickListener(new OnClickListener() {
+        } catch (Exception e) {
+            Log.e("WeekDaysView", "ERROR: " + e.getMessage());
+        }
 
-            @Override
-            public void onClick(View v) {
-            }
-        });
-
-        return rowView;
+        return convertView;
     }
 
 }
