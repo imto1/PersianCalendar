@@ -3,7 +3,7 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:background="@color/white"
+    android:background="@color/dark"
     android:gravity="center">
 
     <RelativeLayout
@@ -17,7 +17,7 @@
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:id="@+id/CTTVDay"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:gravity="center"
             android:layout_centerVertical="true"
             android:layout_centerHorizontal="true" />
@@ -32,7 +32,7 @@
             android:layout_alignParentEnd="true"
             android:layout_marginRight="5dp"
             android:layout_marginBottom="5dp"
-            android:textColor="@color/black" />
+            android:textColor="@color/white" />
 
     </RelativeLayout>
 </LinearLayout>

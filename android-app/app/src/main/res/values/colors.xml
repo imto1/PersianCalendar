@@ -6,4 +6,5 @@
     <color name="holiday">#ff5500</color>
     <color name="position">#00aaff</color>
     <color name="rest_day">#009900</color>
+    <color name="dark">#333333</color>
 </resources>
