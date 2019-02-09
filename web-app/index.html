@@ -1,0 +1,119 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>Persian Calendar</title>
+	<link rel="stylesheet" type="text/css" href="css/common.css" />
+	<script language="javascript" type="text/javascript" src="js/cal.js"></script>
+	<script language="javascript" type="text/javascript" src="js/caltable.js"></script>
+	<script type="text/javascript" language="javascript">
+		var y = 0;
+		var m = 0;
+		var d = 0;
+		function readQuery() {
+			var query = window.location.search;
+			if (query.substring(0, 1) == '?')
+				query = query.substring(1);
+			if(query != "") {
+				var param = new Array();
+				param = query.split('&');
+				y = parseInt(param[0]);
+				m = parseInt(param[1]);
+				d = parseInt(param[2]);
+			}
+		}
+		function init() {
+			readQuery();
+			if(y==0 || m<0 || m>11 || d<1 || d>31) {
+				var packed = "";
+				packed = new String(parseInt(new Date().getFullYear()));
+				packed += "&";
+				packed += new String(parseInt(new Date().getMonth()));
+				packed += "&";
+	
+				packed += new String(parseInt(new Date().getDate()));
+				window.location = '?' + packed;
+			}
+		}
+	</script>
+</head>
+<body id="Body" onload="init();fillTable(y, m, d);">
+	<div id="Index" style="position:absolute; left:0; top:0; display:block;">
+    <form action="index.html" name="calform" id="calform">
+		<table id="caltable" cellpadding="0" cellspacing="0" border="0" class="CalTable">
+			<tr>
+				<td class="HeadCell" colspan="7">
+                    <table id="hdtable" cellpadding="0" cellspacing="0" border="0">
+                    	<tr>
+                        	<td class="_10"></td>
+                        	<td id="pyear" class="btnP" onclick="prevYear(y, m, d);"></td>
+                        	<td id="headyear" class="HeadYear"></td>
+                            <td id="nyear" class="btnN" onclick="nextYear(y, m, d);"></td>
+                        	<td class="_10"></td>
+                            <td id="pmonth" class="btnP" onclick="prevMonth(y, m, d);"></td>
+                            <td id="headmonth" class="HeadMonth"></td>
+                            <td id="nmonth" class="btnN" onclick="nextMonth(y, m, d);"></td>
+                        	<td class="_10"></td>
+                        </tr>
+                    </table>
+				</td>
+			</tr>
+			<tr>
+				<td class="CellF">ج</td>
+				<td class="CellT">پ</td>
+				<td class="HeadCell">چ</td>
+				<td class="HeadCell">س</td>
+				<td class="HeadCell">د</td>
+				<td class="HeadCell">ي</td>
+                <td class="HeadCell">ش</td>
+			</tr>
+			<tr>
+				<td class="CellF" id="15"></td>
+			  	<td class="CellT" id="14"></td>
+				<td class="Cell" id="13"></td>
+				<td class="Cell" id="12"></td>
+	  	    	<td class="Cell" id="11"></td>
+				<td class="Cell" id="10"></td>
+				<td class="Cell" id="16"></td>
+			</tr>
+			<tr>
+				<td class="CellF" id="25"></td>
+				<td class="CellT" id="24"></td>
+				<td class="Cell" id="23"></td>
+				<td class="Cell" id="22"></td>
+				<td class="Cell" id="21"></td>
+				<td class="Cell" id="20"></td>
+				<td class="Cell" id="26"></td>
+			</tr>
+			<tr>
+				<td class="CellF" id="35"></td>
+				<td class="CellT" id="34"></td>
+				<td class="Cell" id="33"></td>
+				<td class="Cell" id="32"></td>
+				<td class="Cell" id="31"></td>
+				<td class="Cell" id="30"></td>
+				<td class="Cell" id="36"></td>
+			</tr>
+			<tr>
+				<td class="CellF" id="45"></td>
+				<td class="CellT" id="44"></td>
+				<td class="Cell" id="43"></td>
+				<td class="Cell" id="42"></td>
+				<td class="Cell" id="41"></td>
+				<td class="Cell" id="40"></td>
+				<td class="Cell" id="46"></td>
+			</tr>
+			<tr>
+				<td class="CellF" id="55"></td>
+				<td class="CellT" id="54"></td>
+				<td class="Cell" id="53"></td>
+				<td class="Cell" id="52"></td>
+				<td class="Cell" id="51"></td>
+				<td class="Cell" id="50"></td>
+				<td class="Cell" id="56"></td>
+			</tr>
+		</table>
+	</form>
+	</div>
+</body>
+</html>
