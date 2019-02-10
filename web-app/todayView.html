@@ -2,7 +2,7 @@
 <html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<title>Persian Calendar tester -- Today View</title>
+	<title>Persian Calendar tester -- Simple Today View</title>
 	<!--link rel="stylesheet" type="text/css" href="css/styles.css" /-->
 	<script language="javascript" type="text/javascript" src="js/calendar.js"></script>
 </head>
@@ -11,31 +11,31 @@
 	<form action="index.html" name="cTest">
 		<center>
 			<br /><input type="text" name="txtDat" value="" /><br /><br />
-			<input type="button" name="btnToP" value="To Persian" onclick='var e= document.forms[0].elements[0];alert(toPersianByStr(e.value));' style="width: 110px;" />
-			<input type="button" name="btnToG" value="To Gregorian" onclick='var e= document.forms[0].elements[0];alert(toGregorianByStr(e.value));' style="width: 110px;" />
+			<input type="button" name="btnToP" value="To Persian" onclick='var e = document.forms[0].elements[0]; alert(toPersianByStr(e.value));' style="width: 110px;" />
+			<input type="button" name="btnToG" value="To Gregorian" onclick='var e = document.forms[0].elements[0]; alert(toGregorianByStr(e.value));' style="width: 110px;" />
 		</center>
 	</form>
     <center>
 	<script language="javascript">
 		document.write("<hr width='300px' />");
         let now = new Now();
-		document.write("Now: ",now.Today());
+		document.write("Now: ", now.Today());
 		document.write("<br />");
-		document.write("Year: ",now.Year());
+		document.write("Year: ", now.Year());
 		document.write("<br />");
-		document.write("Month: ",now.Month());
+		document.write("Month: ", now.Month());
 		document.write("<br />");
-		document.write("Day: ",now.Day());
+		document.write("Day: ", now.Day());
 		document.write("<br />");
 		document.write("<hr width='300px' />");
 		var dat=new Date();
-		document.write("Now: ",dat.getFullYear(),"/",dat.getMonth()+1,"/",dat.getDate());
+		document.write("Now: ", dat.getFullYear(), "/", dat.getMonth() + 1, "/", dat.getDate());
 		document.write("<br />");
-		document.write("Year: ",dat.getFullYear());
+		document.write("Year: ", dat.getFullYear());
 		document.write("<br />");
-		document.write("Month: ",dat.getMonth()+1);
+		document.write("Month: ", dat.getMonth() + 1);
 		document.write("<br />");
-		document.write("Day: ",dat.getDate());
+		document.write("Day: ", dat.getDate());
 	</script>
     </center>
 </body>

@@ -11,7 +11,7 @@
 
 
 function GregorianLeapYear(Year) {
-    if(Year%4 == 0)
+    if(Year % 4 == 0)
     {
         if(Year % 100 != 0)
             return true;
@@ -43,9 +43,9 @@ function SplitDate(FullDate) {
 function getMaxDay(year, month) {
     var maxday = 0;
 
-    if(month>=1 && month<=6)
+    if(month >= 1 && month <= 6)
         maxday = 31;
-    else if(month>=7 && month<=11)
+    else if(month >= 7 && month <= 11)
         maxday = 30;
     else
         maxday = (PersianLeapYear(year)) ? 30 : 29;
@@ -908,7 +908,7 @@ function getDayOfWeek(fullDate) {
     date = SplitDate(toGregorian(fullDate));
     calendar.setFullYear(Number(date[0]), Number(date[1]), Number(date[2]));
     var weekday = calendar.getDay();
-    if(weekday==7)
+    if(weekday == 7)
         return 0;
     else
         return weekday;
@@ -917,7 +917,7 @@ function getDayOfWeek(fullDate) {
 
 function Now() {
     var calendar = new Date();
-    this.date = toPersian(calendar.getFullYear(), calendar.getMonth()+1, calendar.getDate());
+    this.date = toPersian(calendar.getFullYear(), calendar.getMonth() + 1, calendar.getDate());
 }
 
 Now.prototype.Today = function() {

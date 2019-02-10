@@ -2,7 +2,7 @@
 <html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<title>Persian Calendar tester -- Month View</title>
+	<title>Persian Calendar tester -- Simple Month View</title>
 	<script language="javascript" type="text/javascript" src="js/calendar.js"></script>
 </head>
 <body bgcolor="lightgray" link="gray" vlink="gray">
@@ -70,32 +70,28 @@
 		</tr>
 	</table>
 	<script language="javascript">
-		var dayofweek=0;
-		var d=parseInt(new Date().getDay());
+		var dayofweek = 0;
+		var d = parseInt(new Date().getDay());
         let now = new Now();
-		var day=parseInt(now.Day());
-		var month=parseInt(now.Month());
-		var year=parseInt(now.Year());
-		var week=1;
-		var maxday=0;
-		var monthstr="";
+		var day = parseInt(now.Day());
+		var month = parseInt(now.Month());
+		var year = parseInt(now.Year());
+		var week = 1;
+		var maxday = getMaxDay(year, month);
+		var monthstr = "";
 
 		switch(month)
 		{
 			case 1:
-				maxday=31;
 				monthstr="فروردين";
 				break;
 			case 2:
-				maxday=31;
 				monthstr="ارديبهشت";
 				break;
 			case 3:
-				maxday=31;
 				monthstr="خرداد";
 				break;
 			case 4:
-				maxday=31;
 				monthstr="تير";
 				break;
 			case 5:
@@ -103,15 +99,12 @@
 				monthstr="امرداد";
 				break;
 			case 6:
-				maxday=31;
 				monthstr="شهريور";
 				break;
 			case 7:
-				maxday=30;
 				monthstr="مهر";
 				break;
 			case 8:
-				maxday=30;
 				monthstr="آبان";
 				break;
 			case 9:
@@ -123,11 +116,9 @@
 				monthstr="دي";
 				break;
 			case 11:
-				maxday=30;
 				monthstr="بهمن";
 				break;
 			case 12:
-				maxday=29;
 				monthstr="اسپند";
 				break;
 		}

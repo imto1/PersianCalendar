@@ -4,34 +4,36 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<title>Persian Calendar</title>
 	<link rel="stylesheet" type="text/css" href="css/common.css" />
-	<script language="javascript" type="text/javascript" src="js/cal.js"></script>
+	<script language="javascript" type="text/javascript" src="js/calendar.js"></script>
 	<script language="javascript" type="text/javascript" src="js/caltable.js"></script>
 	<script type="text/javascript" language="javascript">
 		var y = 0;
 		var m = 0;
 		var d = 0;
+        
 		function readQuery() {
 			var query = window.location.search;
 			if (query.substring(0, 1) == '?')
 				query = query.substring(1);
 			if(query != "") {
-				var param = new Array();
+				var param = [];
 				param = query.split('&');
 				y = parseInt(param[0]);
 				m = parseInt(param[1]);
 				d = parseInt(param[2]);
 			}
 		}
+        
 		function init() {
 			readQuery();
-			if(y==0 || m<0 || m>11 || d<1 || d>31) {
+			if(y == 0 || m < 0 || m > 11 || d < 1 || d > 31) {
 				var packed = "";
-				packed = new String(parseInt(new Date().getFullYear()));
+                var date = new Date();
+				packed = new String(parseInt(date.getFullYear()));
 				packed += "&";
-				packed += new String(parseInt(new Date().getMonth()));
+				packed += new String(parseInt(date.getMonth()));
 				packed += "&";
-	
-				packed += new String(parseInt(new Date().getDate()));
+				packed += new String(parseInt(date.getDate()));
 				window.location = '?' + packed;
 			}
 		}
