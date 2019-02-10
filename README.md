@@ -16,35 +16,32 @@ This is my own algorithm of Persian Calendar. This project contains:
 <pre>PersianCalendar pc = new PersianCalendar();</pre><br />
 
 
-<b>Subclasses:</b><br />
+<b>Subclasses and their functions:</b><br />
 <ul>
   <li><a href="#convert">Convert</a></li>
+    <a id="convert"></a><strong>Convert</strong><br />
+    <a href="#ctp"><code>toPersian()</code></a><br />
+    <a href="#ctg"><code>toGregorian()</code></a><br /><br />
   <li><a href="#now">Now</a></li>
+    <a id="now"></a><strong>Now</strong><br />
+    <a href="#gn"><code>Today()</code></a><br />
+    <a href="#gy"><code>Year()</code></a><br />
+    <a href="#gm"><code>Month()</code></a><br />
+    <a href="#gd"><code>Day()</code></a><br /><br />
   <li><a href="#utility">Utility</a></li>
+    <a id="utility"></a><strong>Utility</strong><br />
+    <a href="#gyo"><code>getYearOf()</code></a><br />
+    <a href="#gmo"><code>getMonthOf()</code></a><br />
+    <a href="#gdo"><code>getDayOf()</code></a><br />
+    <a href="#ey"><code>extractYear()</code></a><br />
+    <a href="#em"><code>extractMonth()</code></a><br />
+    <a href="#ed"><code>extractDay()</code></a><br />
+    <a href="#gmd"><code>getMaxDay()</code></a><br />
+    <a href="#gdow"><code>getDayOfWeek()</code></a><br />
+    <a href="#gly"><code>GregorianLeapYear()</code></a><br />
+    <a href="#ply"><code>PersianLeapYear()</code></a>
 </ul>
-
-<h2>Methods:</h2><br />
-<a id="convert"></a><strong>Convert</strong><br />
-<a href="#ctp"><code>toPersian()</code></a><br />
-<a href="#ctg"><code>toGregorian()</code></a><br /><br />
-
-<a id="now"></a><strong>Now</strong><br />
-<a href="#gn"><code>Today()</code></a><br />
-<a href="#gy"><code>Year()</code></a><br />
-<a href="#gm"><code>Month()</code></a><br />
-<a href="#gd"><code>Day()</code></a><br /><br />
-
-<a id="utility"></a><strong>Utility</strong><br />
-<a href="#gyo"><code>getYearOf()</code></a><br />
-<a href="#gmo"><code>getMonthOf()</code></a><br />
-<a href="#gdo"><code>getDayOf()</code></a><br />
-<a href="#ey"><code>extractYear()</code></a><br />
-<a href="#em"><code>extractMonth()</code></a><br />
-<a href="#ed"><code>extractDay()</code></a><br />
-<a href="#gmd"><code>getMaxDay()</code></a><br />
-<a href="#gdow"><code>getDayOfWeek()</code></a><br />
-<a href="#gly"><code>GregorianLeapYear()</code></a><br />
-<a href="#ply"><code>PersianLeapYear()</code></a><br /><br /><br />
+<br /><br /><br />
 
 <a id="ctp"></a><code>toPersian()</code> Converting gregorian date to persian date.<br /><br />
 Arguments:<br />
@@ -92,7 +89,7 @@ PersianCalendar pc = new PersianCalendar();
 String date = pc.Now.Today();       
 </pre>
 <br /><br /><br />
-<a id="gy"></a><code>Year()</code>Return the Year of current system date in persian.<br /><br />
+<a id="gy"></a><code>Year()</code>Return the current persian Year.<br /><br />
 Return value: <i>Integer</i><br /><br />
 
 Eg:
@@ -102,7 +99,7 @@ PersianCalendar pc = new PersianCalendar();
 int year = pc.Now.Year();       
 </pre>
 <br /><br /><br />
-<a id="gm"></a><code>Month()</code>Return the Month of current system date in persian.<br /><br />
+<a id="gm"></a><code>Month()</code>Return the current persian Month.<br /><br />
 Return value: <i>Integer</i><br /><br />
 
 Eg:
@@ -112,7 +109,7 @@ PersianCalendar pc = new PersianCalendar();
 int month = pc.Now.Month();       
 </pre>
 <br /><br /><br />
-<a id="gd"></a><code>Day()</code>Return the Day of current system date in persian.<br /><br />
+<a id="gd"></a><code>Day()</code>Return the current persian Day.<br /><br />
 Return value: <i>Integer</i><br /><br />
 
 Eg:
@@ -122,7 +119,7 @@ PersianCalendar pc = new PersianCalendar();
 int day = pc.Now.Day();       
 </pre>
 <br /><br /><br />
-<a id="gyo"></a><code>getYearOf()</code>Return the Year of specified date in persian.<br /><br />
+<a id="gyo"></a><code>getYearOf()</code>Returns Year for the specified date in persian.<br /><br />
 Arguments:<br />
 Integer values for Year, Month and Day<br />
 <i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int Year, int Month, int Day<br /></i><br />
@@ -135,7 +132,7 @@ PersianCalendar pc = new PersianCalendar();
 int year = pc.Utility.getYearOf(int Year, int Month, int Day);       
 </pre>
 <br /><br /><br />
-<a id="gmo"></a><code>getMonthOf()</code>Return the Month of specified date in persian.<br /><br />
+<a id="gmo"></a><code>getMonthOf()</code>Returns Month for the specified date in persian.<br /><br />
 Arguments:<br />
 Integer values for Year, Month and Day<br />
 <i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int Year, int Month, int Day<br /></i><br />
@@ -148,7 +145,7 @@ PersianCalendar pc = new PersianCalendar();
 int month = pc.Utility.getMonthOf(int Year, int Month, int Day);       
 </pre>
 <br /><br /><br />
-<a id="gdo"></a><code>getDayOf()</code>Return the Day of specified date in persian.<br /><br />
+<a id="gdo"></a><code>getDayOf()</code>Returns Day for the specified date in persian.<br /><br />
 Arguments:<br />
 Integer values for Year, Month and Day<br />
 <i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int Year, int Month, int Day<br /></i><br />
@@ -161,7 +158,7 @@ PersianCalendar pc = new PersianCalendar();
 int day = pc.Utility.getDayOf(int Year, int Month, int Day);       
 </pre>
 <br /><br /><br />
-<a id="ey"></a><code>extractYear()</code>Extracts the Year of given date for string parameters.<br /><br />
+<a id="ey"></a><code>extractYear()</code>Extracts the Year from the given date.<br /><br />
 Arguments:<br />
 String format as follow<br />
 <i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"YYYY-MM-DD"<br />
@@ -175,7 +172,7 @@ PersianCalendar pc = new PersianCalendar();
 int year = pc.Utility.extractYear("1365/10/29");       
 </pre>
 <br /><br /><br />
-<a id="em"></a><code>extractMonth()</code>Extracts the Month of given date for string parameters.<br /><br />
+<a id="em"></a><code>extractMonth()</code>Extracts the Month from the date.<br /><br />
 Arguments:<br />
 String format as follow<br />
 <i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"YYYY-MM-DD"<br />
@@ -189,7 +186,7 @@ PersianCalendar pc = new PersianCalendar();
 int month = pc.Utility.extractMonth("1365/10/29");       
 </pre>
 <br /><br /><br />
-<a id="ed"></a><code>extractDay()</code>Extracts the Day of given date for string parameters.<br /><br />
+<a id="ed"></a><code>extractDay()</code>Extracts the Day from the date.<br /><br />
 Arguments:<br />
 String format as follow<br />
 <i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"YYYY-MM-DD"<br />
@@ -394,7 +391,7 @@ if(GregorianLeapYear(2017)){
 }
 </pre>
 <br /><br /><br />
-<a id="ply"></a><code>PersianLeapYear()</code>Return the leap year status for persian year.<br /><br />
+<a id="jsply"></a><code>PersianLeapYear()</code>Return the leap year status for persian year.<br /><br />
 Arguments:<br />
 Integer values for Year<br />
 <i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int Year<br />
