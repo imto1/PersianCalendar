@@ -2,8 +2,8 @@
 <html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<title>Persian Calendar -- Month View</title>
-	<script language="javascript" type="text/javascript" src="js/cal.js"></script>
+	<title>Persian Calendar tester -- Month View</title>
+	<script language="javascript" type="text/javascript" src="js/calendar.js"></script>
 </head>
 <body bgcolor="lightgray" link="gray" vlink="gray">
 	<center><table border="1" width="300px"><tr><td align="center" bgcolor="gray">
@@ -72,9 +72,10 @@
 	<script language="javascript">
 		var dayofweek=0;
 		var d=parseInt(new Date().getDay());
-		var day=parseInt(Day());
-		var month=parseInt(Month());
-		var year=parseInt(Year());
+        let now = new Now();
+		var day=parseInt(now.Day());
+		var month=parseInt(now.Month());
+		var year=parseInt(now.Year());
 		var week=1;
 		var maxday=0;
 		var monthstr="";
@@ -151,7 +152,7 @@
 			if(day<1 && d==6)
 			{
 				document.getElementById(new String(week)+ new String(d)).innerHTML=++day;
-				if(day==parseInt(Day()))
+				if(day==parseInt(now.Day()))
 					if(d==5 || d==4)
 						document.getElementById("t" + new String(week)+ new String(d)).bgColor="darkgray";
 					else
@@ -162,7 +163,7 @@
 				if(day<maxday)
 				{
 					document.getElementById(new String(week)+ new String(dayofweek)).innerHTML=++day;
-					if(day==parseInt(Day()))
+					if(day==parseInt(now.Day()))
 					if(dayofweek==5 || dayofweek==4)
 						document.getElementById("t" + new String(week)+ new String(dayofweek)).bgColor="darkgray";
 					else
@@ -174,7 +175,7 @@
 			if(day<maxday && day>=1 && week<5)
 			{
 				document.getElementById(new String(week+1)+ new String(dayofweek)).innerHTML=++day;
-				if(day==parseInt(Day()))
+				if(day==parseInt(now.Day()))
 					if(dayofweek==5 || dayofweek==4)
 						document.getElementById("t" + new String(week+1)+ new String(dayofweek)).bgColor="darkgray";
 					else
@@ -187,7 +188,7 @@
 			if(day<maxday && day>=1)
 			{
 				document.getElementById(new String(1)+ new String(dayofweek)).innerHTML=++day;
-				if(day==parseInt(Day()))
+				if(day==parseInt(now.Day()))
 					if(dayofweek==5 || dayofweek==4)
 						document.getElementById("t" + new String(1)+ new String(dayofweek)).bgColor="darkgray";
 					else
@@ -198,7 +199,7 @@
 				if(day<maxday)
 				{
 					document.getElementById(new String(1)+ new String(dayofweek)).innerHTML=++day;
-					if(day==parseInt(Day()))
+					if(day==parseInt(now.Day()))
 					if(dayofweek==5 || dayofweek==4)
 						document.getElementById("t" + new String(1)+ new String(dayofweek)).bgColor="darkgray";
 					else
@@ -210,7 +211,7 @@
 	</script>
 	<hr width="300px" />
 <table border="1" width="300px"><tr>
-		<td align="center" bgcolor="gray">OPCU Persian Calendar v<font size="2">1.0.0.0</font> by S.Vahid Hoseini</td>
+		<td align="center" bgcolor="gray">ImTO1 Persian Calendar tester v<font size="2">1.1</font> by @s_vahid_h</td>
 	</tr></table></center>
 </body>
 </html>

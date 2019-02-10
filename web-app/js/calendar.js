@@ -9,23 +9,65 @@
 
 */
 
-function toPersian(Year, Month, Day)
-{
+
+function GregorianLeapYear(Year) {
+    if(Year%4 == 0)
+    {
+        if(Year % 100 != 0)
+            return true;
+        else
+            return (Year % 400 == 0);
+    }
+    return false;
+}
+
+function PersianLeapYear(Year) {
+    var tens = Year % 100;
+    var ones = Year % 10;
+    tens -= ones;
+    tens /= 10;
+    if ((tens == 1 || tens % 2 == 1) && (ones == 1 || ones % 4 == 1))
+        return true;
+    else
+        return ((tens == 0 || tens % 2 == 0) && (ones == 3 || ones == 7));
+}
+
+function SplitDate(FullDate) {
+    var date = [];
+    date = FullDate.split("/");
+    if(date.length < 2)
+        date = FullDate.split("-");
+    return date;
+}
+
+function getMaxDay(year, month) {
+    var maxday = 0;
+
+    if(month>=1 && month<=6)
+        maxday = 31;
+    else if(month>=7 && month<=11)
+        maxday = 30;
+    else
+        maxday = (PersianLeapYear(year)) ? 30 : 29;
+
+    return maxday;
+}
+
+
+function toPersian(Year, Month, Day) {
     if (GregorianLeapYear(Year))
         return ConvertPersianDate_Leap(Year, Month, Day);
     else
         return ConvertPersianDate_NotLeap(Year, Month, Day, GregorianLeapYear(Year - 1));
 }
 
-function toPersianByStr(FullDate)
-{
+function toPersianByStr(FullDate) {
     var date = [];
     date = SplitDate(FullDate);
     return toPersian(Number(date[0]), Number(date[1]), Number(date[2]));
 }
 
-function toGregorian(Year, Month, Day)
-{
+function toGregorian(Year, Month, Day) {
     var L = false;
     if ((Month >= 1) && (Month <= 9))
         L = GregorianLeapYear(Year + 621);
@@ -50,15 +92,13 @@ function toGregorian(Year, Month, Day)
         return ConvertGregorianDate_NotLeap(Year, Month, Day, PersianLeapYear(Year));
 }
 
-function toGregorianByStr(FullDate)
-{
+function toGregorianByStr(FullDate) {
     var date = [];
     date = SplitDate(FullDate);
     return toGregorian(Number(date[0]), Number(date[1]), Number(date[2]));
 }
 
-function ConvertPersianDate_NotLeap(Year, Month, Day, AL)
-{
+function ConvertPersianDate_NotLeap(Year, Month, Day, AL) {
     var datestr = "";
     switch(Month)
     {
@@ -277,8 +317,7 @@ function ConvertPersianDate_NotLeap(Year, Month, Day, AL)
     return datestr;
 }
 
-function ConvertPersianDate_Leap(Year, Month, Day)
-{
+function ConvertPersianDate_Leap(Year, Month, Day) {
     var datestr = "";
     switch(Month)
     {
@@ -458,8 +497,7 @@ function ConvertPersianDate_Leap(Year, Month, Day)
     return datestr;
 }
 
-function ConvertGregorianDate_NotLeap(Year, Month, Day, L)
-{
+function ConvertGregorianDate_NotLeap(Year, Month, Day, L) {
     var datestr = "";
     switch(Month)
     {
@@ -683,8 +721,7 @@ function ConvertGregorianDate_NotLeap(Year, Month, Day, L)
     return datestr;
 }
 
-function ConvertGregorianDate_Leap(Year, Month, Day)
-{
+function ConvertGregorianDate_Leap(Year, Month, Day) {
     var datestr = "";
     switch(Month)
     {
@@ -865,102 +902,7 @@ function ConvertGregorianDate_Leap(Year, Month, Day)
 }
 
 
-function Now()
-{
-    var calendar = new Date();
-    this.date = toPersian(calendar.getFullYear(), calendar.getMonth()+1, calendar.getDate());
-}
-
-Now.prototype.Today = function()
-{
-    return this.date;
-}
-
-Now.prototype.Year = function()
-{
-    var year = [];
-    year = SplitDate(this.date);
-    return Number(year[0]);
-}
-
-Now.prototype.Month = function()
-{
-    var month = [];
-    month = SplitDate(this.date);
-    return Number(month[1]);
-}
-
-Now.prototype.Day = function()
-{
-    var day = [];
-    day = SplitDate(this.date);
-    return Number(day[2]);
-}
-
-
-function getYearOf(Year, Month, Day)
-{
-    var date = toPersian(Year, Month, Day);
-    var year = [];
-    year = SplitDate(date);
-    return Number(year[0]);
-}
-
-function getMonthOf(Year, Month, Day)
-{
-    var date = toPersian(Year, Month, Day);
-    var month = [];
-    month = SplitDate(date);
-    return Number(month[1]);
-}
-
-function getDayOf(Year, Month, Day)
-{
-    var date = toPersian(Year, Month, Day);
-    var day = [];
-    day = SplitDate(date);
-    return Number(day[2]);
-}
-
-
-function Extract(FullDate){
-    this.date = [];
-    this.date = SplitDate(FullDate);
-}
-
-Extract.prototype.Year = function()
-{
-    return Number(this.date[0]);
-}
-
-Extract.prototype.Month = function()
-{
-    return Number(this.date[1]);
-}
-
-Extract.prototype.Day = function()
-{
-    return Number(this.date[2]);
-}
-
-
-function getMaxDay(year, month)
-{
-    var maxday = 0;
-
-    if(month>=1 && month<=6)
-        maxday = 31;
-    else if(month>=7 && month<=11)
-        maxday = 30;
-    else
-        maxday = (PersianLeapYear(year)) ? 30 : 29;
-
-    return maxday;
-}
-
-
-function getDayOfWeek(fullDate)
-{
+function getDayOfWeek(fullDate) {
     var calendar = new Date();
     var date = [];
     date = SplitDate(toGregorian(fullDate));
@@ -972,34 +914,66 @@ function getDayOfWeek(fullDate)
         return weekday;
 }
 
-function GregorianLeapYear(Year)
-{
-    if(Year%4 == 0)
-    {
-        if(Year%100 != 0)
-            return true;
-        else
-            return (Year%400 == 0);
-    }
-    return false;
+
+function Now() {
+    var calendar = new Date();
+    this.date = toPersian(calendar.getFullYear(), calendar.getMonth()+1, calendar.getDate());
 }
 
-function PersianLeapYear(Year)
-{
-    var tens = Year % 100;
-    var ones = Year % 10;
-    tens -= ones;
-    tens /= 10;
-    if ((tens == 1 || tens % 2 == 1) && (ones == 1 || ones % 4 == 1))
-        return true;
-    else
-        return ((tens == 0 || tens % 2 == 0) && (ones == 3 || ones == 7));
+Now.prototype.Today = function() {
+    return this.date;
 }
 
-function SplitDate(FullDate){
-    var date = [];
-    date = FullDate.split("/");
-    if(date.length<2)
-        date = FullDate.split("-");
-    return date;
+Now.prototype.Year = function() {
+    var year = [];
+    year = SplitDate(this.date);
+    return Number(year[0]);
+}
+
+Now.prototype.Month = function() {
+    var month = [];
+    month = SplitDate(this.date);
+    return Number(month[1]);
+}
+
+Now.prototype.Day = function() {
+    var day = [];
+    day = SplitDate(this.date);
+    return Number(day[2]);
+}
+
+
+function getDateAt(Year, Month, Day) {
+    this.date = [];
+    this.date = SplitDate(toPersian(Year, Month, Day));
+}
+
+getDateAt.prototype.Year = function() {
+    return Number(this.date[0]);
+}
+
+getDateAt.prototype.Month = function() {
+    return Number(this.date[1]);
+}
+
+getDateAt.prototype.Day = function() {
+    return Number(this.date[2]);
+}
+
+
+function Extract(FullDate) {
+    this.date = [];
+    this.date = SplitDate(FullDate);
+}
+
+Extract.prototype.Year = function() {
+    return Number(this.date[0]);
+}
+
+Extract.prototype.Month = function() {
+    return Number(this.date[1]);
+}
+
+Extract.prototype.Day = function() {
+    return Number(this.date[2]);
 }

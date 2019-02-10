@@ -2,29 +2,30 @@
 <html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<title>Persian Calendar -- Today View</title>
-	<link rel="stylesheet" type="text/css" href="css/styles.css" />
-	<script language="javascript" type="text/javascript" src="js/cal.js"></script>
+	<title>Persian Calendar tester -- Today View</title>
+	<!--link rel="stylesheet" type="text/css" href="css/styles.css" /-->
+	<script language="javascript" type="text/javascript" src="js/calendar.js"></script>
 </head>
 
 <body>
 	<form action="index.html" name="cTest">
 		<center>
 			<br /><input type="text" name="txtDat" value="" /><br /><br />
-			<input type="button" name="btnToP" value="To Persian" onclick='var e= document.forms[0].elements[0];alert(ToPersianByStr(e.value));' style="width: 110px;" />
-			<input type="button" name="btnToG" value="To Gregorian" onclick='var ee= document.forms[0].elements[0];alert(ToGregorianByStr(ee.value));' style="width: 110px;" />
+			<input type="button" name="btnToP" value="To Persian" onclick='var e= document.forms[0].elements[0];alert(toPersianByStr(e.value));' style="width: 110px;" />
+			<input type="button" name="btnToG" value="To Gregorian" onclick='var e= document.forms[0].elements[0];alert(toGregorianByStr(e.value));' style="width: 110px;" />
 		</center>
 	</form>
     <center>
 	<script language="javascript">
 		document.write("<hr width='300px' />");
-		document.write("Now: ",Now());
+        let now = new Now();
+		document.write("Now: ",now.Today());
 		document.write("<br />");
-		document.write("Year: ",Year());
+		document.write("Year: ",now.Year());
 		document.write("<br />");
-		document.write("Month: ",Month());
+		document.write("Month: ",now.Month());
 		document.write("<br />");
-		document.write("Day: ",Day());
+		document.write("Day: ",now.Day());
 		document.write("<br />");
 		document.write("<hr width='300px' />");
 		var dat=new Date();
