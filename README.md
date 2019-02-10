@@ -16,20 +16,17 @@ This is my own algorithm of Persian Calendar. This project contains:
 <pre>PersianCalendar pc = new PersianCalendar();</pre><br />
 
 
-<b>Subclasses and their functions:</b><br />
+<b>Subclasses and functions:</b><br />
 <ul>
-  <li><a href="#convert">Convert</a></li>
-    <a id="convert"></a><strong>Convert</strong><br />
+  <li>Convert</li>
     <a href="#ctp"><code>toPersian()</code></a><br />
     <a href="#ctg"><code>toGregorian()</code></a><br /><br />
-  <li><a href="#now">Now</a></li>
-    <a id="now"></a><strong>Now</strong><br />
+  <li>Now</li>
     <a href="#gn"><code>Today()</code></a><br />
     <a href="#gy"><code>Year()</code></a><br />
     <a href="#gm"><code>Month()</code></a><br />
     <a href="#gd"><code>Day()</code></a><br /><br />
-  <li><a href="#utility">Utility</a></li>
-    <a id="utility"></a><strong>Utility</strong><br />
+  <li>Utility</li>
     <a href="#gyo"><code>getYearOf()</code></a><br />
     <a href="#gmo"><code>getMonthOf()</code></a><br />
     <a href="#gdo"><code>getDayOf()</code></a><br />
@@ -257,7 +254,7 @@ boolean leap = pc.Utility.PersianLeapYear(1396);
 <a id="jsusage"></a><h1>Javascript</h1>
 <pre><script language="javascript" type="text/javascript" src="js/calendar.js"></script></pre><br />
 
-<b>We have 3 categories of methods:</b><br />
+<b>We have 3 categories of functions:</b><br />
 <ul>
   <li>Conversion</li>
     <a href="#jsctp"><code>toPersian()</code></a><br />
