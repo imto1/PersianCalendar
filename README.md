@@ -1,7 +1,18 @@
-# Persian Calendar library for Java
-This is a class library for use in Java/Android projects.
+# Persian Calendar Project
+This is my own algorithm of Persian Calendar. This project contains: 
+<ol>
+    <li>Java class library for use in Java/Android projects.</li>
+    <li>Persian Calendar Android application.</li>
+    <li>Javascript library and a simple web application.</li>
+</ol><br />
 
 <b>Usage:</b><br />
+<ol>
+    <li><a href="#jusage"><code>Java</code></a></li>
+    <li><a href="#jsusage"><code>Javascript</code></a></li>
+</ol>
+
+<a id="jusage"></a><h1>Java</h1>
 <pre>PersianCalendar pc = new PersianCalendar();</pre><br />
 
 
@@ -244,3 +255,7 @@ PersianCalendar pc = new PersianCalendar();
 
 boolean leap = pc.Utility.PersianLeapYear(1396);       
 </pre>
+
+
+<a id="jsusage"></a></a><h1>Javascript</h1>
+<pre><script language="javascript" type="text/javascript" src="js/calendar.js"></script></pre><br />
