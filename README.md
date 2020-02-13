@@ -2,8 +2,7 @@
 This is my own algorithm of Persian Calendar. This project contains: 
 <ol>
     <li>Java class library for use in Java/Android projects.</li>
-    <li>Persian Calendar Android application.</li>
-    <li>Javascript library and a simple web application.</li>
+    <li>Javascript library for web applications.</li>
 </ol><br />
 
 <b>Usage:</b><br />
