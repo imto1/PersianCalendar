@@ -17,6 +17,7 @@ def today():
     calendar = datetime.today()
     return to_persian(calendar.year, calendar.month, calendar.day)
 
+
 def year():
 
     calendar = datetime.today()
@@ -24,12 +25,14 @@ def year():
     year = split_date(date)
     return int(year[0])
 
+
 def month():
 
     calendar = datetime.today()
     date = to_persian(calendar.year, calendar.month, calendar.day)
     month = split_date(date)
     return int(month[1])
+
 
 def day():
 
@@ -46,6 +49,7 @@ def split_date(datestr):
         date = datestr.split("-")
     return date
 
+
 def gregorian_leap_year(year):
     if year % 4 == 0:
         if year % 100 != 0:
@@ -53,6 +57,7 @@ def gregorian_leap_year(year):
         else:
             return (year % 400 == 0)
     return False
+
 
 def persian_leap_year(year):
     tens = year % 100
@@ -64,11 +69,13 @@ def persian_leap_year(year):
     else:
         return ((tens == 0 or tens % 2 == 0) and (ones == 3 or ones == 7))
 
+
 def get_year_of(Year, Month, Day):
 
     date = to_persian(Year, Month, Day)
     year = split_date(date)
     return int(year[0])
+
 
 def get_month_of(Year,  Month,  Day):
 
@@ -76,26 +83,31 @@ def get_month_of(Year,  Month,  Day):
     month = split_date(date)
     return int(month[1])
 
+
 def get_day_of(Year,  Month,  Day):
 
     date = to_persian(Year, Month, Day)
     day = split_date(date)
     return int(day[2])
 
+
 def extract_year(FullDate):
 
     year = split_date(FullDate)
     return int(year[0])
+
 
 def extract_month(FullDate):
 
     month = split_date(FullDate)
     return int(month[1])
 
+
 def extract_day(FullDate):
 
     day = split_date(FullDate)
     return int(day[2])
+
 
 def gwt_max_day(year,  month):
 
@@ -109,6 +121,7 @@ def gwt_max_day(year,  month):
         else:
             return 29
 
+
 def get_day_of_week(fullDate):
 
     date = datetime.fromisoformat(to_gregorian(fullDate))
@@ -117,7 +130,6 @@ def get_day_of_week(fullDate):
         return weekday + 2
     else:
         return weekday - 5
-
 
 
 # TODO: Remove redundant blocks
@@ -131,7 +143,7 @@ def to_persian(*args):
 
     if len(date) == 1:
         date = split_date(str(date[0]))
-    elif len(date) < 1:
+    elif len(date) < 1 or len(date) == 2 or len(date) > 3:
         print('Bad arguments...!')
         return None
 
@@ -145,6 +157,7 @@ def to_persian(*args):
     else:
         return convert_persian_date(year, month, day, gregorian_leap_year(year - 1))
 
+
 def to_gregorian(*args):
     '''You should give me integer (year, month, day) or string like \'1398-12-9\' or \'1398/12/9\'.'''
 
@@ -154,7 +167,7 @@ def to_gregorian(*args):
 
     if len(date) == 1:
         date = split_date(str(date[0]))
-    elif len(date) < 1:
+    elif len(date) < 1 or len(date) == 2 or len(date) > 3:
         print('Bad arguments...!')
         return None
 
@@ -180,6 +193,7 @@ def to_gregorian(*args):
         return convert_gregorian_leap_date(year, month, day)
     else:
         return convert_gregorian_date(year, month, day, persian_leap_year(year))
+
 
 def convert_persian_date(year, month, day, after_leap):
     '''Convert gregorian date to persian date.'''
@@ -326,6 +340,7 @@ def convert_persian_date(year, month, day, after_leap):
 
     return datestr
 
+
 def convert_persian_leap_date(year, month, day):
     '''Convert gregorian date to persian date in leap year.'''
 
@@ -451,6 +466,7 @@ def convert_persian_leap_date(year, month, day):
         datestr += str(day)
 
     return datestr
+
 
 def convert_gregorian_date(year, month, day, leap):
     '''Convert persian date to greforian date.'''
@@ -599,6 +615,7 @@ def convert_gregorian_date(year, month, day, leap):
         datestr += str(day)
 
     return datestr
+
 
 def convert_gregorian_leap_date(year, month, day):
     '''Convert persian date to greforian date in leap year.'''
