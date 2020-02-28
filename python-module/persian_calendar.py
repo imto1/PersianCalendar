@@ -132,7 +132,6 @@ def get_day_of_week(fullDate):
         return weekday - 5
 
 
-# TODO: Remove redundant blocks
 # conversion
 def to_persian(*args):
     '''You should give me integer (year, month, day) or string like \'2-27-2020\' or \'2020/2/27\'.'''
@@ -272,16 +271,7 @@ def convert_persian_date(year, month, day, after_leap):
             month -= 2
         year -= 621
 
-    elif month == 7:
-        if day >= 1 and day <= 22:
-            day += 9
-            month -= 3
-        elif day >= 23 and day <= 31:
-            day -= 22
-            month -= 2
-        year -= 621
-
-    elif month == 8:
+    elif month == 7 or month == 8:
         if day >= 1 and day <= 22:
             day += 9
             month -= 3
@@ -326,19 +316,7 @@ def convert_persian_date(year, month, day, after_leap):
             month -= 2
         year -= 621
 
-    datestr = str(year)
-    datestr += '-'
-    if month < 10:
-        datestr += '0' + str(month)
-    else:
-        datestr += str(month)
-    datestr += '-'
-    if day < 10:
-        datestr += '0' + str(day)
-    else:
-        datestr += str(day)
-
-    return datestr
+    return format_date(year, month, day)
 
 
 def convert_persian_leap_date(year, month, day):
@@ -399,16 +377,7 @@ def convert_persian_leap_date(year, month, day):
             month -= 2
         year -= 621
 
-    elif month == 7:
-        if day >= 1 and day <= 21:
-            day += 10
-            month -= 3
-        elif day >= 22 and day <= 31:
-            day -= 21
-            month -= 2
-        year -= 621
-
-    elif month == 8:
+    elif month == 7 or month == 8:
         if day >= 1 and day <= 21:
             day += 10
             month -= 3
@@ -453,19 +422,7 @@ def convert_persian_leap_date(year, month, day):
             month -= 2
         year -= 621
 
-    datestr = str(year)
-    datestr += '-'
-    if month < 10:
-        datestr += '0' + str(month)
-    else:
-        datestr += str(month)
-    datestr += '-'
-    if day < 10:
-        datestr += '0' + str(day)
-    else:
-        datestr += str(day)
-
-    return datestr
+    return format_date(year, month, day)
 
 
 def convert_gregorian_date(year, month, day, leap):
@@ -507,16 +464,7 @@ def convert_gregorian_date(year, month, day, leap):
             month += 3
         year += 621
 
-    elif month == 5:
-        if day >= 1 and day <= 9:
-            day += 22
-            month += 2
-        elif day >= 10 and day <= 31:
-            day -= 9
-            month += 3
-        year += 621
-
-    elif month == 6:
+    elif month == 5 or month == 6:
         if day >= 1 and day <= 9:
             day += 22
             month += 2
@@ -602,19 +550,7 @@ def convert_gregorian_date(year, month, day, leap):
                 month -= 9
         year += 622
 
-    datestr = str(year)
-    datestr += '-'
-    if month < 10:
-        datestr += '0' + str(month)
-    else:
-        datestr += str(month)
-    datestr += '-'
-    if day < 10:
-        datestr += '0' + str(day)
-    else:
-        datestr += str(day)
-
-    return datestr
+    return format_date(year, month, day)
 
 
 def convert_gregorian_leap_date(year, month, day):
@@ -656,16 +592,7 @@ def convert_gregorian_leap_date(year, month, day):
             month += 3
         year += 621
 
-    elif month == 5:
-        if day >= 1 and day <= 10:
-            day += 21
-            month += 2
-        elif day >= 11 and day <= 31:
-            day -= 10
-            month += 3
-        year += 621
-
-    elif month == 6:
+    elif month == 5 or month == 6:
         if day >= 1 and day <= 10:
             day += 21
             month += 2
@@ -729,6 +656,10 @@ def convert_gregorian_leap_date(year, month, day):
             month -= 9
         year += 622
 
+    return format_date(year, month, day)
+
+
+def format_date(year, month, day):
     datestr = str(year)
     datestr += '-'
     if month < 10:
