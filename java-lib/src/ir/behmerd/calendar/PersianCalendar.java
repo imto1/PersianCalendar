@@ -21,6 +21,25 @@ public class PersianCalendar {
 		
 		public convert(){}
 		
+		private String formatDate(int year, int month, int day)
+		{
+	        String datestr;
+	        datestr = String.valueOf(year);
+	        datestr += "-";
+	        if(month < 10)
+	            datestr += "0" + String.valueOf(month);
+	        else
+	            datestr += String.valueOf(month);
+
+	        datestr += "-";
+	        if(day < 10)
+	            datestr += "0" + String.valueOf(day);
+	        else
+	            datestr += String.valueOf(day);
+
+	        return datestr;
+		}
+
 	    public String toPersian(int Year, int Month, int Day)
 	    {
 	        if (Utilities.GregorianLeapYear(Year))
@@ -69,7 +88,6 @@ public class PersianCalendar {
 
 	    private String ConvertPersianDate_NotLeap(int Year, int Month, int Day, boolean AL)
 	    {
-	        String datestr;
 	        switch(Month)
 	        {
 	            case 1:
@@ -271,25 +289,11 @@ public class PersianCalendar {
 	                break;
 	        }
 
-	        datestr = String.valueOf(Year);
-	        datestr = datestr + "/";
-	        if(Month < 10)
-	            datestr = datestr + "0" + Month;
-	        else
-	            datestr = datestr + Month;
-
-	        datestr = datestr + "/";
-	        if(Day < 10)
-	            datestr = datestr + "0" + Day;
-	        else
-	            datestr = datestr + Day;
-
-	        return datestr;
+			return formatDate(Year, Month, Day);
 	    }
 
 	    private String ConvertPersianDate_Leap(int Year, int Month, int Day)
 	    {
-	        String datestr;
 	        switch(Month)
 	        {
 	            case 1:
@@ -451,26 +455,11 @@ public class PersianCalendar {
 	                break;
 	        }
 
-
-	        datestr = String.valueOf(Year);
-	        datestr = datestr + "/";
-	        if(Month < 10)
-	            datestr = datestr + "0" + Month;
-	        else
-	            datestr = datestr + Month;
-
-	        datestr = datestr + "/";
-	        if(Day < 10)
-	            datestr = datestr + "0" + Day;
-	        else
-	            datestr = datestr + Day;
-
-	        return datestr;
+			return formatDate(Year, Month, Day);
 	    }
 
 	    private String ConvertGregorianDate_NotLeap(int Year, int Month, int Day, boolean L)
 	    {
-	        String datestr;
 	        switch(Month)
 	        {
 	            case 1:
@@ -676,26 +665,11 @@ public class PersianCalendar {
 	                break;
 	        }
 
-	        if(Month < 10)
-	            datestr = "0" + String.valueOf(Month);
-	        else
-	            datestr = String.valueOf(Month);
-
-	        datestr = datestr + "/";
-	        if(Day < 10)
-	            datestr = datestr + "0" + Day;
-	        else
-	            datestr = datestr + Day;
-
-	        datestr = datestr + "/";
-	        datestr = datestr + Year;
-
-	        return datestr;
+			return formatDate(Year, Month, Day);
 	    }
 
 	    private String ConvertGregorianDate_Leap(int Year, int Month, int Day)
 	    {
-	        String datestr;
 	        switch(Month)
 	        {
 	            case 1:
@@ -857,21 +831,7 @@ public class PersianCalendar {
 	                break;
 	        }
 
-	        if(Month < 10)
-	            datestr = "0" + String.valueOf(Month);
-	        else
-	            datestr = String.valueOf(Month);
-
-	        datestr = datestr + "/";
-	        if(Day < 10)
-	            datestr = datestr + "0" + Day;
-	        else
-	            datestr = datestr + Day;
-
-	        datestr = datestr + "/";
-	        datestr = datestr + Year;
-
-	        return datestr;
+			return formatDate(Year, Month, Day);
 	    }
 	    
 	}
