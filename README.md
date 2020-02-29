@@ -1,4 +1,4 @@
-# Welcome to the Persian Calendar wiki!
+# Welcome to the Persian Calendar!
 This is my own algorithm to convert Gregorian calendar to Persian(Jalali) calendar. I wrote this code for C# first as a part of my university project. Then i found out that Persian Calendar is already implemented on .NET framework in System.Globalization libraries 😐. I've searched for something like this in JavaScript and found some libraries, but non of them suits my needs. then I've decided to write my algorithm in JavaScript language and later for Java and Python3.
 <br />I've distributed my codes by wish to help someone.
 
