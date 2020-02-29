@@ -1,7 +1,6 @@
 *.pyc
 .settings
-bin/*
-bin/
 .project
 .classpath
-temp.py
+settings.json
+.vscode/
