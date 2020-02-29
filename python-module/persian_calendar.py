@@ -132,6 +132,22 @@ def get_day_of_week(fullDate):
         return weekday - 5
 
 
+def format_date(year, month, day):
+    datestr = str(year)
+    datestr += '-'
+    if month < 10:
+        datestr += '0' + str(month)
+    else:
+        datestr += str(month)
+    datestr += '-'
+    if day < 10:
+        datestr += '0' + str(day)
+    else:
+        datestr += str(day)
+
+    return datestr
+
+
 # conversion
 def to_persian(*args):
     '''You should give me integer (year, month, day) or string like \'2-27-2020\' or \'2020/2/27\'.'''
@@ -657,22 +673,6 @@ def convert_gregorian_leap_date(year, month, day):
         year += 622
 
     return format_date(year, month, day)
-
-
-def format_date(year, month, day):
-    datestr = str(year)
-    datestr += '-'
-    if month < 10:
-        datestr += '0' + str(month)
-    else:
-        datestr += str(month)
-    datestr += '-'
-    if day < 10:
-        datestr += '0' + str(day)
-    else:
-        datestr += str(day)
-
-    return datestr
 
 
 # TODO: remove followings before final release
