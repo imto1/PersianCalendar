@@ -53,6 +53,25 @@ function getMaxDay(year, month) {
     return maxday;
 }
 
+function formatDate(year, month, day){
+    var datestr = "";
+    datestr += year;
+    datestr += "-";
+    if(month < 10)
+        datestr += "0" + month;
+    else
+        datestr += month;
+
+    datestr += "-";
+    if(day < 10)
+        datestr += "0" + day;
+    else
+        datestr += day;
+
+    return datestr;
+}
+
+
 
 function toPersian(Year, Month, Day) {
     if (GregorianLeapYear(Year))
@@ -99,7 +118,6 @@ function toGregorianByStr(FullDate) {
 }
 
 function ConvertPersianDate_NotLeap(Year, Month, Day, AL) {
-    var datestr = "";
     switch(Month)
     {
         case 1:
@@ -301,24 +319,10 @@ function ConvertPersianDate_NotLeap(Year, Month, Day, AL) {
             break;
     }
 
-    datestr += Year;
-    datestr += "/";
-    if(Month < 10)
-        datestr += "0" + Month;
-    else
-        datestr += Month;
-
-    datestr += "/";
-    if(Day < 10)
-        datestr += "0" + Day;
-    else
-        datestr += Day;
-
-    return datestr;
+    return formatDate(Year, Month, Day);
 }
 
 function ConvertPersianDate_Leap(Year, Month, Day) {
-    var datestr = "";
     switch(Month)
     {
         case 1:
@@ -480,25 +484,10 @@ function ConvertPersianDate_Leap(Year, Month, Day) {
             break;
     }
 
-
-    datestr += Year;
-    datestr += "/";
-    if(Month < 10)
-        datestr += "0" + Month;
-    else
-        datestr += Month;
-
-    datestr += "/";
-    if(Day < 10)
-        datestr += "0" + Day;
-    else
-        datestr += Day;
-
-    return datestr;
+    return formatDate(Year, Month, Day);
 }
 
 function ConvertGregorianDate_NotLeap(Year, Month, Day, L) {
-    var datestr = "";
     switch(Month)
     {
         case 1:
@@ -704,25 +693,10 @@ function ConvertGregorianDate_NotLeap(Year, Month, Day, L) {
             break;
     }
 
-    if(Month < 10)
-        datestr += "0" + Month;
-    else
-        datestr += Month;
-
-    datestr += "/";
-    if(Day < 10)
-        datestr += "0" + Day;
-    else
-        datestr += Day;
-
-    datestr += "/";
-    datestr += Year;
-
-    return datestr;
+    return formatDate(Year, Month, Day);
 }
 
 function ConvertGregorianDate_Leap(Year, Month, Day) {
-    var datestr = "";
     switch(Month)
     {
         case 1:
@@ -884,21 +858,7 @@ function ConvertGregorianDate_Leap(Year, Month, Day) {
             break;
     }
 
-    if(Month < 10)
-        datestr += "0" + Month;
-    else
-        datestr += Month;
-
-    datestr += "/";
-    if(Day < 10)
-        datestr += "0" + Day;
-    else
-        datestr += Day;
-
-    datestr += "/";
-    datestr += Year;
-
-    return datestr;
+    return formatDate(Year, Month, Day);
 }
 
 
